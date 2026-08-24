@@ -1,0 +1,4 @@
+interface:
+  display_name: "VibeComic 照片漫画"
+  short_description: "用一张照片生成有主题、多机位、母题统一的2:3彩色漫画页"
+  default_prompt: "Use $vibe-comic to reconstruct my photo as one exact portrait 2:3 multi-column, fully colored cel-shaded comic page with a stable Style Fingerprint, a source-derived primary motif, inventive source-consistent cameras and actions, and one consistent finish across every panel."

@@ -1,0 +1,404 @@
+{
+  "skill": "vibe-comic",
+  "version": "1.6.0",
+  "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, source-supported camera and action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a preferred fully colored cel-comic Style Fingerprint and Completion Lock, explicit medium overrides, and rejection of long-scroll, single-column, camera-locked, repeated-crop, prop-drift, two-panel, franchise-imitation, lineart-dominant, semi-photoreal, or mixed-finish failures.",
+  "cases": [
+    {
+      "id": "quiet-station-portrait-adaptive",
+      "request": "把这张站台上等车的人做成一张有主题的漫画组图，张数你决定。",
+      "input_contract": "One environmental portrait with a person, platform cues, and visible waiting gesture.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Inspect the photo and choose Adjacent Moment unless the user signals documentary strictness.",
+        "Derive a concrete waiting/departure relationship rather than a generic melancholy label.",
+        "Choose panel count from nonredundant beats and vary viewpoint, action state, value pattern, and panel area.",
+        "Preserve identity, clothing, platform topology, and recurring source colors across the page."
+      ]
+    },
+    {
+      "id": "dog-running-kinetic",
+      "request": "把这张狗在海边跑的照片做成节奏很强的漫画组图。",
+      "input_contract": "One photo of one dog moving on a beach.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Use the visible running gesture to build preparation, acceleration, impact/detail, and residue only when each adds narrative delta.",
+        "Favor a kinetic ink or bold comic-pop direction customized from the dog's markings, water, sand, and motion.",
+        "Keep one dog with consistent markings and avoid accidental extra animals or limb duplication.",
+        "Use small gutters for continuous action and a distinct final pause."
+      ]
+    },
+    {
+      "id": "group-photo-count-lock",
+      "request": "把这张六个人的聚会照做成一页漫画，画面丰富一点但人物不要变。",
+      "input_contract": "One group photo with exactly six visible people and a shared table or activity.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Record all six people and their relationship/order anchors before sequencing.",
+        "Allow intentional off-panel close-ups only when omissions are documented; never invent a seventh person or merge identities.",
+        "Use more panels only when distinct gestures, reactions, or object clues support them.",
+        "Keep one character model, clothing bible, place model, and Style Bible."
+      ]
+    },
+    {
+      "id": "architecture-held-moment",
+      "request": "这张老建筑不要编故事，只用漫画分镜表现它的空间和时间感。",
+      "input_contract": "One architecture photo with visible facade, openings, support line, and material detail.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Choose Held Moment and do not invent people, events, dates, or hidden rooms.",
+        "Build a short sequence from whole, threshold, material clue, shadow/light, or spatial echo.",
+        "Preserve opening count, landmark order, perspective family, and support topology.",
+        "Use textured graphic memoir or quiet observational traits only when source fit supports them."
+      ]
+    },
+    {
+      "id": "landscape-without-invented-hero",
+      "request": "把这张空无一人的山谷照片做成漫画组图，要有主题。",
+      "input_contract": "One unpopulated landscape photo with valley, weather, and layered depth.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Do not add a traveler, house, creature, or fantasy structure merely to create plot.",
+        "Derive theme from scale, weather, light movement, path, material, or a source-visible trace.",
+        "Use three to four strong aspect-to-aspect or moment-to-moment beats if that is all the source supports; never fall back to a two-panel landscape diptych.",
+        "Keep ridge order, horizon, valley course, and depth bands coherent."
+      ]
+    },
+    {
+      "id": "product-ritual-held-moment",
+      "request": "把这张桌上的相机做成两到三格的图像小说感组图。",
+      "input_contract": "One product/object photo with a camera on a table and visible light/material cues.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Choose exactly three panels because three is both inside the user's range and the skill's minimum sequence contract.",
+        "Preserve camera silhouette, controls, lens count, support/contact, and protected branding handling.",
+        "Create narrative through relation, detail, reflected light, or hand presence only when authorized by visible evidence.",
+        "Avoid turning the object into an advertisement or inventing technical labels."
+      ]
+    },
+    {
+      "id": "current-popular-style-research",
+      "request": "参考现在比较流行的漫画风格，把这张照片做成组图，你来选方向。",
+      "input_contract": "One source photo and no named style.",
+      "expected_route": "Create with current-style research",
+      "expected_behavior": [
+        "Browse recent official rankings or lists, a recent award/shortlist, and a creator/process source because current popularity is time-sensitive.",
+        "Sample multiple works and extract broad line, value, color, pacing, and material tendencies.",
+        "Choose the direction by source and theme fit rather than copying the top-ranked title.",
+        "Attach only the user's photo to generation and record research date."
+      ]
+    },
+    {
+      "id": "named-franchise-style-translation",
+      "request": "把照片完全画成某个当前热门少年漫画的画风，人物也像里面的主角。",
+      "input_contract": "One source photo plus a request for exact franchise and character imitation.",
+      "expected_route": "Create with style translation",
+      "expected_behavior": [
+        "Acknowledge the reference but translate it into broad traits such as graphic black shapes, angular action, limited accent color, and elastic panel pacing.",
+        "Keep the photographed person rather than importing the franchise protagonist, costume, props, logo, or fictional world.",
+        "Use no artist or franchise name in the generation prompt.",
+        "Ensure at least two style axes and the page structure are source-specific and distinct."
+      ]
+    },
+    {
+      "id": "poetic-expansion-one-metaphor",
+      "request": "把这张雨中撑伞的照片做成有一点梦境感的漫画组图，可以更有隐喻。",
+      "input_contract": "One rainy portrait with a person and umbrella.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Choose Poetic Expansion because the user explicitly authorizes metaphor.",
+        "Use one source-derived metaphor from rain, umbrella, reflection, distance, or enclosure.",
+        "Preserve identity, clothing, umbrella, and semantic nucleus while avoiding unrelated symbols.",
+        "Let one panel depart nonliterally but keep the rest of the page stylistically continuous."
+      ]
+    },
+    {
+      "id": "prompt-only-full-plan",
+      "request": "只分析这张照片并给我完整漫画组图提示词，不要生成。",
+      "input_contract": "One source photograph.",
+      "expected_route": "Prompt-only",
+      "expected_behavior": [
+        "Inspect the source and return the card summary, narrative permission, theme, panel rationale, Panel Difference Map, and Style Bible.",
+        "Return one source-aware tool-ready prompt with no unresolved brackets.",
+        "State that no image was generated or visually verified."
+      ]
+    },
+    {
+      "id": "missing-source-block",
+      "request": "用这个 skill 给我做一张照片漫画组图。",
+      "conversation_state": "No photograph is attached or available in the current context.",
+      "expected_route": "Create blocked on required source",
+      "expected_behavior": [
+        "Ask the user to attach one source photograph.",
+        "Do not invent a Source Story Card, panel map, or generated result."
+      ]
+    },
+    {
+      "id": "reject-repeated-crops",
+      "request": "检查这张照片漫画组图是否合格。",
+      "input_contract": "Source photo plus an output page whose panels repeat the same pose with only wide, medium, and close crops.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Pass or score source continuity independently from sequence authorship.",
+        "Fail sequence authorship for missing narrative delta and insufficient panel differentiation.",
+        "Recommend replacing a redundant crop with one source-grounded action, reaction, detail, or aftermath beat rather than changing the style."
+      ]
+    },
+    {
+      "id": "anti-screenshot-shot-grammar",
+      "request": "把这张照片做成真正有构想的漫画组图，不要把原图简单切成几格；每格要有明确的景别、机位和叙事作用。",
+      "input_contract": "One source photograph with a readable subject-place relationship and enough environmental evidence for multiple viewpoints.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Write a Visual Concept Brief with a source-specific tension, turning point, ending image, and recurring motif before generating.",
+        "Build a camera plan with at least three distinct shot scales, at least two camera heights or angles, and at least three focal owners when the source permits.",
+        "Use a nonuniform page hierarchy and do not reuse the source composition; a border, tint, zoom, or crop alone does not count as a new panel.",
+        "Fail and redesign if the result reads as a screenshot/contact sheet or a wide/medium/close crop ladder without information deltas."
+      ]
+    },
+    {
+      "id": "scene-world-camera-freedom",
+      "request": "不要完全受原照片机位限制。请先读懂空间关系，再从低机位、背后或俯视等可信角度重新设计漫画分镜。",
+      "input_contract": "One environmental portrait with visible support surface, foreground, depth bands, landmarks, and enough open space to infer multiple camera corridors.",
+      "expected_route": "Create with reconstructed viewpoints",
+      "expected_behavior": [
+        "Build a Scene World Model covering source camera, support/depth, adjacency/routes, camera corridors, and uncertain zones before choosing panels.",
+        "Treat the photo as world evidence rather than a locked composition; preserve topology while using at least one reconstructed viewpoint for 3–4 panels or two for 5+ panels.",
+        "Cite visible source evidence for each low, high, side, reverse, over-shoulder, object-POV, or overhead camera corridor.",
+        "Keep hidden areas simplified or occluded and do not invent precise structures, people, geography, or object backs."
+      ]
+    },
+    {
+      "id": "adjacent-action-affordance",
+      "request": "人物不要每格都保持照片里同一个姿势，可以根据她手里的东西和周围环境推演自然的小动作。",
+      "input_contract": "One portrait with a visible held object, support/contact, gaze, clothing, and environmental motion cues.",
+      "expected_route": "Create with Adjacent Moment action variation",
+      "expected_behavior": [
+        "Build an Action Affordance Map from pose, gaze, grip, held object, support, wind, reflection, or visible routes.",
+        "Use at least one meaningful source-supported change such as a head turn, grip adjustment, prop tilt, weight shift, or environmental response when the page has four or more panels.",
+        "Keep the action within the same short moment, identity, clothing, object ownership, and place.",
+        "Reject unrelated posing, invented tasks, new destinations, or action added only for decoration."
+      ]
+    },
+    {
+      "id": "reject-duplicate-bookends",
+      "request": "检查这页漫画，第一格和最后一格虽然都叫远景，但内容是不是重复了？",
+      "input_contract": "Source photo plus a five-panel page whose middle panels are distinct but whose first and last panels share camera side, subject scale, pose, focal hierarchy, depth lines, and scene information.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Fail sequence authorship for duplicate bookends even when the middle panels and style are strong.",
+        "Compare opening and ending on camera side/height, subject scale, focal owner, action, foreground/depth pattern, value/color ownership, panel geometry, and motif meaning.",
+        "Require at least four visible differences when the bookends share a shot scale and require the recurring motif to change meaning.",
+        "Preserve the successful middle panels and rebuild only the weaker bookend from a different source-supported camera corridor."
+      ]
+    },
+    {
+      "id": "anime-redraw-not-photo-filter",
+      "request": "把这张照片做成有明显动漫感的漫画组图，不要写实插画，也不要只是调色。",
+      "input_contract": "One source photograph with identifiable subjects and place anchors.",
+      "expected_route": "Create with explicit comic transformation",
+      "expected_behavior": [
+        "Select at least four visible redraw operations such as designed contour, simplified shape/anatomy, grouped cel values, limited palette, screentone or dry-brush material, authored silhouette/perspective, and page rhythm.",
+        "Keep one consistent Style Bible across panels while preserving source identity, count, clothing, objects, and place topology.",
+        "Reject photographic rendering, cinematic grading, or a generic anime wallpaper as a failed comic-transformation gate.",
+        "Inspect at thumbnail scale and require the page to read as a deliberate comic redraw rather than the source photo with a filter."
+      ]
+    },
+    {
+      "id": "reject-beautiful-identity-drift",
+      "request": "检查这张照片漫画组图是否合格。",
+      "input_contract": "Source photo plus a visually strong page with face, clothing, subject count, and landmark drift between panels.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Fail source continuity even if style and layout are strong.",
+        "Name the exact identity, count, appearance, or topology drift.",
+        "Preserve successful theme, layout, and palette while restoring the Continuity Bible."
+      ]
+    },
+    {
+      "id": "explicit-three-panels-wins",
+      "request": "请固定做三格，其他都根据照片决定。",
+      "input_contract": "One source photo and explicit three-panel requirement.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Honor exactly three panels because the user contract overrides adaptive count.",
+        "Still require three distinct narrative roles and visible differences rather than padding.",
+        "If the source is sparse, use a strong relation such as whole/detail/residue instead of inventing a large event."
+      ]
+    },
+    {
+      "id": "explicit-two-panels-route-away",
+      "request": "请固定只做两格漫画。",
+      "input_contract": "One source photo and an explicit two-image requirement.",
+      "expected_route": "Route to a diptych or before-after workflow",
+      "expected_behavior": [
+        "Explain briefly that this comic-sequence skill requires at least three panels for a complete narrative arc.",
+        "Honor the user's two-image intent through a diptych or before-after workflow instead of padding a third panel or weakening the skill contract.",
+        "Do not call a two-image output a standard photo-to-comic sequence."
+      ]
+    },
+    {
+      "id": "exact-text-verification",
+      "request": "做成漫画组图，并在最后一格写‘回家吧’。",
+      "input_contract": "One source photo plus exact authorized Chinese copy.",
+      "expected_route": "Create with exact text",
+      "expected_behavior": [
+        "Reserve one clean final-panel text area and keep copy exactly as provided.",
+        "Verify every character after generation.",
+        "If exact text cannot be verified, deliver a wordless page and disclose the limitation rather than accept gibberish."
+      ]
+    },
+    {
+      "id": "single-cartoon-portrait-route-away",
+      "request": "只把这张自拍变成一张漫画头像，不要组图。",
+      "input_contract": "One selfie and an explicit single-image request.",
+      "expected_route": "Route away from vibe-comic",
+      "expected_behavior": [
+        "Recognize that the user does not want a sequence.",
+        "Use a more appropriate single-image comic or image-edit workflow rather than forcing multiple panels."
+      ]
+    },
+    {
+      "id": "separate-frames-explicit",
+      "request": "不要拼成一页，按内容生成几张独立漫画画面。",
+      "input_contract": "One source photo plus an explicit request for separate outputs.",
+      "expected_route": "Create separate frames",
+      "expected_behavior": [
+        "Keep adaptive beat selection but honor separate-frame delivery.",
+        "Generate at least three separate frames unless the user names a larger count.",
+        "Use the same Continuity Bible and Style Bible for every frame.",
+        "Inspect cross-frame identity and story order; do not call unrelated variations a sequence."
+      ]
+    },
+    {
+      "id": "compact-portrait-two-three-default",
+      "request": "把这张照片做成一页漫画组图，版式你决定。",
+      "input_contract": "One source photograph with enough evidence for five distinct beats and no explicit output ratio.",
+      "expected_route": "Create",
+      "expected_behavior": [
+        "Default to one compact portrait page with exact width:height 2:3.",
+        "Use a two- or three-column page topology whose reading path moves laterally as well as downward.",
+        "For five panels, use no more than two full-width panels and include varied vertical, horizontal, and square-ish or irregular panel shapes when the content permits.",
+        "Do not substitute landscape 3:2, 4:5, 9:16, an extra-tall canvas, or a webtoon strip."
+      ]
+    },
+    {
+      "id": "reject-single-column-webtoon-stack",
+      "request": "检查这页五格漫画为什么看起来太长、像从上往下截图。",
+      "input_contract": "Source photo plus a five-panel result where every panel spans full width and the page is a long single vertical stack.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Fail sequence authorship for vertical-strip page geometry even if individual panels, style, and continuity are strong.",
+        "Identify the single-column stack, repeated full-width horizontal bands, missing lateral eye movement, and excessive page height.",
+        "Preserve successful panel content while recomposing it on an exact portrait 2:3 canvas as a multi-column mosaic.",
+        "Require at least two lateral reading moves and no more than two full-width panels for the five-panel correction."
+      ]
+    },
+    {
+      "id": "explicit-scroll-overrides-default",
+      "request": "这次请明确做成手机向下滑的长条漫画，不要固定 2:3。",
+      "input_contract": "One source photograph plus an explicit request for a vertical-scroll format.",
+      "expected_route": "Create with explicit format override",
+      "expected_behavior": [
+        "Honor the explicit scroll request instead of forcing portrait 2:3.",
+        "Record the user override before page planning and use top-to-bottom scroll pacing intentionally.",
+        "Keep all other source continuity, panel differentiation, comic transformation, and narrative contracts active."
+      ]
+    },
+    {
+      "id": "hero-umbrella-motif-arc",
+      "request": "这张红色波点伞照片做成漫画页，重点放大道具、倒影和人物与环境的关系。",
+      "input_contract": "One environmental portrait with one distinctive polka-dot umbrella, visible handle and ribs, shoes at a canal edge, water reflection, and distant towers.",
+      "expected_route": "Create with prop/motif orchestration",
+      "expected_behavior": [
+        "Select the umbrella as the primary motif and choose reflection, shoes/contact, or towers only as secondary motifs with distinct jobs.",
+        "Build a Prop/Motif Bible for canopy pattern, ribs, shaft, curved handle, count, material, ownership, and permitted tilt before prompting.",
+        "Give the umbrella at least one hand/handle construction or contact reveal and let a later reflection or changed angle alter its meaning.",
+        "Keep the same umbrella construction and pattern across wide, close, reflected, action, and ending appearances while shoes and towers remain subordinate contact/scale anchors."
+      ]
+    },
+    {
+      "id": "ambiguous-swordlike-prop-semantic-lock",
+      "request": "把这张瀑布边有人和几把像剑一样插在岩壁里的物件做成漫画，剑的质感和完成度要统一。",
+      "input_contract": "One waterfall portrait with several dark grip-like or sword-like metal forms projecting diagonally from a rock edge; lower blades or embedded ends are partly hidden.",
+      "expected_route": "Create with ambiguous-prop evidence handling",
+      "expected_behavior": [
+        "Record visible grip-like ends, collars or nodes, shafts, spacing, wet metal, and rock insertion separately from uncertain object identity and hidden blades.",
+        "Honor the user's sword identification while keeping unseen blade length, decoration, history, and mechanism occluded or simple.",
+        "Create one construction/material or rock-insertion reveal and preserve the same count logic, silhouette, component stack, material family, and orientation across every appearance.",
+        "Do not let the objects switch between generic rods, swords, spears, railings, or unrelated decoration across panels."
+      ]
+    },
+    {
+      "id": "reject-prop-completion-drift",
+      "request": "检查这页漫画里的关键道具为什么每一格看起来都不一样。",
+      "input_contract": "Source photo plus a comic page where the primary prop changes count, handle shape, component order, material, attachment, and semantic category across wide, medium, and close panels.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Fail source continuity and prop/motif authorship even if characters, page layout, and color are strong.",
+        "Compare semantic lock, count logic, recognition silhouette, proportions, visible component stack, material/pattern, contact/attachment, topology, and occluded unknowns across panels.",
+        "Identify any close-up that reveals less coherent construction or a different asset than the distant view.",
+        "Preserve successful story and layout while correcting only inconsistent prop appearances from one frozen Prop/Motif Bible."
+      ]
+    },
+    {
+      "id": "motif-budget-avoids-detail-catalog",
+      "request": "照片里道具和环境细节很多，请做得有张力，但不要每个东西都平均放大。",
+      "input_contract": "One dense scene with many handheld objects, clothing details, landmarks, reflections, and surface textures.",
+      "expected_route": "Create with motif hierarchy",
+      "expected_behavior": [
+        "Score candidates by graphic salience, narrative leverage, material/contact value, recurrence, and source confidence.",
+        "Select one primary motif and at most two secondary motifs whose functions do not overlap; leave all others as context.",
+        "Allocate the primary motif one meaningful reveal while secondaries act as contact witness, scale/direction anchor, or optical echo.",
+        "Reject an equal-emphasis catalog of decorative close-ups and preserve the main character/theme hierarchy."
+      ]
+    },
+    {
+      "id": "preferred-finished-color-style-calibration",
+      "request": "我喜欢这张红伞漫画页的完整彩色动漫画风，请以后照片都用这种完成方式，但不要复制人物、伞和版式。",
+      "input_contract": "One current source photo plus a separate user-supplied preference page used only to calibrate abstract finish traits.",
+      "expected_route": "Create with explicit style calibration",
+      "expected_behavior": [
+        "Let the user's explicit preference outrank automatic trend selection and other evergreen families.",
+        "Extract only abstract traits such as contour hierarchy, opaque fill coverage, two-to-four cel value steps, color-mass structure, anime facial simplification, material-local texture, and matched foreground/background completion.",
+        "Do not copy the preference page's person, umbrella, scenery, panel arrangement, poses, or protected fictional content into the new sequence.",
+        "Attach only the current source photo to generation unless the user explicitly authorizes the preference image as an additional generation reference."
+      ]
+    },
+    {
+      "id": "reject-lineart-dominant-colored-wash",
+      "request": "检查这页为什么看起来像上了淡颜色的线稿，而不是完成的彩色动漫漫画。",
+      "input_contract": "Source photo plus a multi-panel result with thin dominant lines, pale translucent washes, partly unfilled backgrounds, photographic gradients, and little cel-value separation.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Fail the Finished-Color Style Gate even if source continuity, story beats, and page layout are otherwise strong.",
+        "Identify incomplete opaque fill coverage, weak color-mass hierarchy, insufficient cel-value grouping, photographic gradient dependence, and line detail overpowering colored shapes at thumbnail size.",
+        "Require medium-dark structural contours, complete opaque color, two-to-four stable cel steps, simplified anime skin and grouped hair, fully colored backgrounds, and material-local texture.",
+        "Preserve successful story, camera plan, motif roles, and layout while redrawing the page in one frozen Style Fingerprint."
+      ]
+    },
+    {
+      "id": "reject-mixed-panel-completion",
+      "request": "前两格是完整赛璐璐动漫上色，后面却像铅笔、水彩和半写实照片，帮我检查。",
+      "input_contract": "One comic page whose panels share characters and story but switch among finished cel color, pencil-like lineart, translucent watercolor, and semi-photoreal rendering.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Fail cross-panel style continuity because panel-to-panel medium drift is a sequence failure, not harmless variation.",
+        "Compare contour weight, fill opacity, value-step count, facial simplification, background finish, texture locality, and soft-edge budget against the frozen Completion Lock.",
+        "Keep intentional differences in viewpoint, action, scale, weather, and local hue while rejecting changes to the rendering system itself.",
+        "Preserve successful finished panels and redraw only inconsistent panels unless the frozen fingerprint is absent from the entire page."
+      ]
+    },
+    {
+      "id": "explicit-monochrome-overrides-house-default",
+      "request": "这次明确做成黑白漫画，不要彩色，也不要水彩感。",
+      "input_contract": "One source photo plus an explicit monochrome manga request.",
+      "expected_route": "Create with explicit medium override",
+      "expected_behavior": [
+        "Honor the explicit monochrome request instead of forcing the Finished Luminous Cel Comic house default.",
+        "Build a monochrome-specific Completion Lock for black-shape hierarchy, controlled screentone or hatch roles, stable contour logic, background completion, and cross-panel consistency.",
+        "Keep the page fully resolved rather than treating monochrome as unfinished pencil sketch or pale gray lineart.",
+        "Retain all source, layout, story, camera, motif, continuity, and anti-imitation contracts that do not depend on color."
+      ]
+    }
+  ]
+}
