@@ -1,11 +1,11 @@
-# VibeComic
+# Photo to Comic
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Codex Skill](https://img.shields.io/badge/Codex-Skill-111827.svg)](SKILL.md)
 
 把一张照片重构成一页真正有分镜、有主题、有视觉母题的漫画。
 
-VibeComic 是一个面向 Codex 的照片漫画化 Skill。它不会把同一张照片反复裁切，也不会只叠加“动漫滤镜”；它会先阅读照片中的人物、空间、动作、道具与情绪关系，再设计可信的新机位和相邻时刻，最终生成一张紧凑、完整上色的多格漫画页。
+Photo to Comic 是一个面向 Codex 的照片漫画化 Skill。它不会把同一张照片反复裁切，也不会只叠加“动漫滤镜”；它会先阅读照片中的人物、空间、动作、道具与情绪关系，再设计可信的新机位和相邻时刻，最终生成一张紧凑、完整上色的多格漫画页。
 
 > Turn one photograph into an authored multi-panel comic page with source-grounded storytelling, camera invention, motif continuity, and a stable finished-color cel-comic style.
 
@@ -20,7 +20,7 @@ VibeComic 是一个面向 Codex 的照片漫画化 Skill。它不会把同一张
 - 关键道具在特写里反而结构不完整；
 - 成图像淡彩线稿、半写实照片或混合画风。
 
-VibeComic 把这些问题变成可检查的工作合同，而不是只依赖一段宽泛的提示词。
+Photo to Comic 把这些问题变成可检查的工作合同，而不是只依赖一段宽泛的提示词。
 
 ## 核心能力
 
@@ -63,13 +63,13 @@ VibeComic 把这些问题变成可检查的工作合同，而不是只依赖一�
 将仓库克隆到 Codex 的个人 Skills 目录：
 
 ```bash
-git clone https://github.com/zcjunn/vibe-comic.git "${CODEX_HOME:-$HOME/.codex}/skills/vibe-comic"
+git clone https://github.com/zcjunn/photo-to-comic.git "${CODEX_HOME:-$HOME/.codex}/skills/photo-to-comic"
 ```
 
 重新载入 Codex 后即可自动触发，也可以显式调用：
 
 ```text
-Use $vibe-comic to turn this photo into a finished comic page.
+Use $photo-to-comic to turn this photo into a finished comic page.
 ```
 
 ## 使用示例
@@ -77,15 +77,15 @@ Use $vibe-comic to turn this photo into a finished comic page.
 上传一张照片后，可以直接说：
 
 ```text
-用 VibeComic 把这张照片生成一页漫画，分格数量根据内容决定。
+用 Photo to Comic 把这张照片生成一页漫画，分格数量根据内容决定。
 ```
 
 ```text
-用 $vibe-comic 重构这张照片，重点表现雨伞、倒影和人物与环境的关系。
+用 $photo-to-comic 重构这张照片，重点表现雨伞、倒影和人物与环境的关系。
 ```
 
 ```text
-用 $vibe-comic 做成黑白漫画页，保留人物、服装和场景关系。
+用 $photo-to-comic 做成黑白漫画页，保留人物、服装和场景关系。
 ```
 
 也支持只输出完整制作方案而不生图，或审查已有漫画页的连续性、版式、道具和画风问题。
@@ -93,7 +93,7 @@ Use $vibe-comic to turn this photo into a finished comic page.
 ## 目录结构
 
 ```text
-vibe-comic/
+photo-to-comic/
 ├── SKILL.md                         # 入口、触发条件与核心合同
 ├── agents/openai.yaml              # Codex 界面名称与默认调用提示
 ├── evals/evals.json                # 34 个行为回归案例
@@ -127,7 +127,7 @@ vibe-comic/
 可以使用 Codex 自带的 Skill 校验器检查结构：
 
 ```bash
-python ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py ~/.codex/skills/vibe-comic
+python ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py ~/.codex/skills/photo-to-comic
 ```
 
 行为评测位于 [`evals/evals.json`](evals/evals.json)，覆盖最低三格、自由机位、首尾去重、固定 2:3 拼页、道具完成度、歧义物件、完整彩色风格和显式媒介覆盖等情况。

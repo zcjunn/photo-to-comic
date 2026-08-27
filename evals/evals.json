@@ -1,5 +1,5 @@
 {
-  "skill": "vibe-comic",
+  "skill": "photo-to-comic",
   "version": "1.6.0",
   "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, source-supported camera and action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a preferred fully colored cel-comic Style Fingerprint and Completion Lock, explicit medium overrides, and rejection of long-scroll, single-column, camera-locked, repeated-crop, prop-drift, two-panel, franchise-imitation, lineart-dominant, semi-photoreal, or mixed-finish failures.",
   "cases": [
@@ -251,7 +251,7 @@
       "id": "single-cartoon-portrait-route-away",
       "request": "只把这张自拍变成一张漫画头像，不要组图。",
       "input_contract": "One selfie and an explicit single-image request.",
-      "expected_route": "Route away from vibe-comic",
+      "expected_route": "Route away from photo-to-comic",
       "expected_behavior": [
         "Recognize that the user does not want a sequence.",
         "Use a more appropriate single-image comic or image-edit workflow rather than forcing multiple panels."

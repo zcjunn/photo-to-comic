@@ -1,10 +1,10 @@
 ---
-name: vibe-comic
+name: photo-to-comic
 description: >-
   Transform one user-supplied photograph into one original comic sequence of at least three panels, normally composed as a compact portrait 2:3 multi-column page, with source-derived themes, camera invention, salient prop or motif authorship, and a stable finished-color cel-comic default unless the user requests another medium. Use for 照片转漫画组图、照片漫画化叙事、漫画分镜页、manga page from a photo, adaptive-panel comic storytelling, prop-led comic sequencing, or reviewing such an output. Do not use for a single cartoon portrait/filter, a two-panel diptych, source-free comic creation, exact franchise or artist imitation, or pixel-locked photo preservation.
 ---
 
-# VibeComic
+# Photo to Comic
 
 Turn one photograph into one finished comic page that feels authored as a sequence, not repeated crops of the same image. Preserve the source's people, place, objects, and emotional provenance while inventing only source-consistent adjacent moments. Treat the photograph as evidence for a scene-world, not as a locked camera. Let narrative information determine panel count and hierarchy. Always design the story, plausible action space, and camera grammar before writing the image prompt; never use the source photo as a ready-made panel underpainting.
 
