@@ -1,7 +1,7 @@
 {
   "skill": "photo-to-comic",
-  "version": "1.7.0",
-  "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, source-supported camera and action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a Painterly Comic Animation Style Fingerprint and Completion Lock adapted from painterly-frame methods, explicit flat-cel/monochrome overrides, and rejection of long-scroll, single-column, camera-locked, repeated-crop, prop-drift, two-panel, franchise-imitation, lineart-dominant, pasted-block, global-texture, semi-photoreal, or mixed-finish failures.",
+  "version": "1.8.0",
+  "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, at least three shot scales, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, optional story- and beauty-driven camera relocation, source-supported action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a rendering-only Painterly Comic Animation Style Fingerprint adapted from painterly-frame methods, identity-versus-performance separation, explicit flat-cel/monochrome overrides, and rejection of single-frame, long-scroll, single-column, forced-angle, repeated-crop, prop-drift, two-panel, franchise-imitation, lineart-dominant, pasted-block, global-texture, semi-photoreal, or mixed-finish failures.",
   "cases": [
     {
       "id": "quiet-station-portrait-adaptive",
@@ -150,7 +150,7 @@
       "expected_route": "Create",
       "expected_behavior": [
         "Write a Visual Concept Brief with a source-specific tension, turning point, ending image, and recurring motif before generating.",
-        "Build a camera plan with at least three distinct shot scales, at least two camera heights or angles, and at least three focal owners when the source permits.",
+        "Build a Camera Opportunity Map, require at least three distinct shot scales and at least three focal owners when the source permits, and use a changed camera height or angle only when it adds narrative or aesthetic value.",
         "Use a nonuniform page hierarchy and do not reuse the source composition; a border, tint, zoom, or crop alone does not count as a new panel.",
         "Fail and redesign if the result reads as a screenshot/contact sheet or a wide/medium/close crop ladder without information deltas."
       ]
@@ -159,10 +159,10 @@
       "id": "scene-world-camera-freedom",
       "request": "不要完全受原照片机位限制。请先读懂空间关系，再从低机位、背后或俯视等可信角度重新设计漫画分镜。",
       "input_contract": "One environmental portrait with visible support surface, foreground, depth bands, landmarks, and enough open space to infer multiple camera corridors.",
-      "expected_route": "Create with reconstructed viewpoints",
+      "expected_route": "Create with story-driven camera opportunities",
       "expected_behavior": [
         "Build a Scene World Model covering source camera, support/depth, adjacency/routes, camera corridors, and uncertain zones before choosing panels.",
-        "Treat the photo as world evidence rather than a locked composition; preserve topology while using at least one reconstructed viewpoint for 3–4 panels or two for 5+ panels.",
+        "Treat the photo as world evidence rather than a locked composition; preserve topology and score possible camera relocations for narrative gain, aesthetic gain, and scene confidence before choosing any.",
         "Cite visible source evidence for each low, high, side, reverse, over-shoulder, object-POV, or overhead camera corridor.",
         "Keep hidden areas simplified or occluded and do not invent precise structures, people, geography, or object backs."
       ]
@@ -371,7 +371,7 @@
       "expected_route": "Review",
       "expected_behavior": [
         "Fail the Painterly Comic Continuity Gate even if source continuity, story beats, and page layout are otherwise strong.",
-        "Identify photo underpainting, pasted colour blocks, weak 5–9 mass/three-value structure, missing faceted planes or connected brush fields, uniform edge treatment, and line detail overpowering authored colour shapes at thumbnail size.",
+        "Identify photo underpainting, pasted colour blocks, weak area-adaptive mass/three-value structure, missing faceted planes or connected brush fields, uniform edge treatment, and line detail overpowering authored colour shapes at thumbnail size.",
         "Require selective structural contours, fully authored colour, three broad value groups, scene-owned colour roles, faceted planes, shared illumination, material-local marks, and a matched character/background finish.",
         "Preserve successful story, camera plan, motif roles, and layout while redrawing the page in one frozen Painterly Comic Animation Style Fingerprint."
       ]
@@ -383,7 +383,7 @@
       "expected_route": "Review",
       "expected_behavior": [
         "Fail cross-panel style continuity because panel-to-panel medium drift is a sequence failure, not harmless variation.",
-        "Compare contour role, colour-mass/value logic, plane language, brush continuity, face geometry, background finish, material locality, and edge hierarchy against the frozen Completion Lock.",
+        "Compare contour role, area-adaptive colour-mass/value logic, plane language, brush continuity, face identity, background finish, material locality, and edge hierarchy against the rendering-only Completion Lock.",
         "Keep intentional differences in viewpoint, action, scale, weather, and local hue while rejecting changes to the rendering system itself.",
         "Preserve successful finished panels and redraw only inconsistent panels unless the frozen fingerprint is absent from the entire page."
       ]
@@ -406,8 +406,8 @@
       "input_contract": "One source photo with enough environment and a person or salient object to support a multi-panel sequence.",
       "expected_route": "Create with Painterly Comic Animation default",
       "expected_behavior": [
-        "Read painterly-frame as abstract methods only: composition/exposure lock, three value groups, scene-owned colour roles, 5–9 interlocking masses, faceted planes, connected brush fields, shared illumination, material-local marks, and focal/support/context edge hierarchy.",
-        "Preserve the photo-to-comic sequence contract: at least three panels, exact portrait 2:3 compact mosaic, multiple shot scales, at least two angle/height changes, reconstructed viewpoints, action or state delta, bookend contrast, and one coherent motif arc.",
+        "Read painterly-frame as abstract rendering methods only: three-value logic, scene-owned colour roles, area-adaptive interlocking masses, faceted planes, connected brush fields, shared illumination, material-local marks, and focal/support/context edge hierarchy; do not import source ratio, composition, pose, gaze, or single-frame locks.",
+        "Preserve the photo-to-comic sequence contract: at least three panels, exact portrait 2:3 compact mosaic, at least three shot scales, optional earned camera relocations, action or state delta, bookend contrast, and one coherent motif arc.",
         "Use one frozen Painterly Comic Animation Style Fingerprint and Completion Lock across every panel; keep anime/comic anatomy readable without reverting to flat cel bands, pasted cutouts, global texture, or a photo filter.",
         "Attach only the source photo to generation and keep the adapter self-contained without importing another skill's license or runtime dependency."
       ]
@@ -419,7 +419,7 @@
       "expected_route": "Create or Review with sequence-first painterly control",
       "expected_behavior": [
         "Keep the painterly surface subordinate to authored storytelling: every panel needs a role, information delta, shot scale, camera corridor, focal owner, and transition.",
-        "Require at least three shot scales, two camera heights/angles, the reconstructed-viewpoint quota, and at least three visible adjacent-panel differences; replace crop-only panels with source-supported actions, foregrounds, viewpoints, or relationship details.",
+        "Require at least three shot scales, independent information roles, and at least three visible adjacent-panel differences; replace crop-only panels with source-supported actions, focal-owner changes, foregrounds, earned viewpoints, motif changes, or relationship details.",
         "Retain exact portrait 2:3 two-dimensional page geometry, lateral reading moves, dominant-panel hierarchy, and opening/ending contrast while freezing one colour/plane/brush system."
       ]
     },
@@ -430,18 +430,18 @@
       "expected_route": "Review",
       "expected_behavior": [
         "Fail the Painterly Comic Continuity Gate even if the page has attractive colours or correct panel count.",
-        "Identify absent 5–9 interlocking masses, weak three-group value structure, missing faceted planes, broken boundary illumination, global brush/noise overlay, uniform edge treatment, and sticker-like subject/background separation.",
+        "Identify absent area-adaptive interlocking masses, weak three-group value structure, missing faceted planes, broken boundary illumination, global brush/noise overlay, uniform edge treatment, and sticker-like subject/background separation.",
         "Preserve successful story, camera plan, motif roles, and 2:3 layout while rebuilding only the colour/plane/brush/material/edge completion system."
       ]
     },
     {
-      "id": "painterly-face-geometry-guard",
-      "request": "画面绘画感可以加强，但人物的眼线、视线、表情和脸部比例在不同分格里要保持同一个人。",
-      "input_contract": "One source portrait and a painterly comic page where the head axis, eye-line, gaze, expression, or feature spacing drifts between panels.",
+      "id": "painterly-face-identity-guard",
+      "request": "画面绘画感可以加强，人物要始终是同一个人，但不同分格可以有自然的转头、视线和表情变化。",
+      "input_contract": "One source portrait and a painterly comic page where identity-bearing facial proportions or relative feature spacing drift, while some head-axis, gaze, expression, pose, or hand-state changes are intentional storyboard performance.",
       "expected_route": "Review or targeted correction",
       "expected_behavior": [
-        "Fail the face-geometry and cross-panel continuity checks while leaving valid page topology and painterly surface decisions intact.",
-        "Restore the head axis, eye-line, gaze, expression, hair mass, and feature spacing from the source evidence; allow painterly planes and local marks without changing identity.",
+        "Fail only the face-identity and cross-panel continuity errors while leaving intentional performance changes, valid page topology, and painterly surface decisions intact.",
+        "Restore facial proportions, relative feature spacing, age cues, distinctive features, and hair mass from source evidence; do not restore the photographed head axis, eye-line, gaze, expression, pose, or hand state when the storyboard intentionally changed them.",
         "Use at most one targeted correction and do not solve identity drift by reducing the whole page to a photographic or lineart finish."
       ]
     },
@@ -453,7 +453,43 @@
       "expected_behavior": [
         "Honor the explicit flat-cel request instead of forcing Painterly Comic Animation.",
         "Use complete opaque fills, two-to-four stable grouped cel values, medium-dark structural contours, simplified anime anatomy, fully coloured backgrounds, and local material texture under one alternate Completion Lock.",
-        "Keep all non-medium contracts: at least three panels, exact portrait 2:3 mosaic, camera and action invention, motif continuity, face geometry, and anti-imitation rules."
+        "Keep all non-medium contracts: at least three panels, exact portrait 2:3 mosaic, story-driven camera and action decisions, motif continuity, face identity, and anti-imitation rules."
+      ]
+    },
+    {
+      "id": "painterly-single-frame-lock-must-not-transfer",
+      "request": "用 painterly-frame 的画风控制来做这张照片的漫画组图，但绝对不能变成一张单幅画。",
+      "input_contract": "One source photo and an explicit request to combine painterly-frame rendering with photo-to-comic sequencing.",
+      "expected_route": "Create with photo-to-comic ownership and rendering-only painterly adapter",
+      "expected_behavior": [
+        "Return one outer-borderless portrait 2:3 page containing at least three visibly divided internal panels, never a single painterly hero frame.",
+        "Treat the source photo as semantic scene/story evidence rather than a painterly Edit Target; do not inherit source ratio, exact composition, crop, subject placement, pose, gaze, expression, horizon, or camera.",
+        "Let photo-to-comic own panel count, page geometry, shot scales, cameras, actions, poses, and narrative order while painterly methods control colour, value, planes, brush, material, edge hierarchy, and face identity only.",
+        "Reject any prompt or result that restores Preserve-and-enrich single-frame locks or collapses the page into one borderless image without panels."
+      ]
+    },
+    {
+      "id": "camera-angle-variation-is-optional-and-earned",
+      "request": "可以考虑平视、仰视、俯视或换相机位置，但前提是漫画叙事和画面更好；没必要时可以不换。",
+      "input_contract": "One source photo whose scene may or may not benefit from camera relocation.",
+      "expected_route": "Create with Camera Opportunity Map",
+      "expected_behavior": [
+        "Evaluate source-aligned level, relocated level, low, high/overhead, side, reverse, over-shoulder, and object-level candidates by narrative gain, aesthetic gain, and scene confidence.",
+        "Use only the cameras that improve story, emotion, scale, spatial clarity, or beauty; record rejected candidates or a keep-source-aligned decision without enforcing any angle count.",
+        "Always retain at least three panels, at least three shot scales, independent information roles, and non-crop adjacent-panel deltas.",
+        "Reject arbitrary camera novelty and reject a page that uses the absence of camera changes as permission for repeated crops."
+      ]
+    },
+    {
+      "id": "zero-camera-relocation-can-still-pass",
+      "request": "如果这个场景原来的机位最好，就不要硬换角度，但仍然要做成有叙事的多格漫画。",
+      "input_contract": "One source photo where the source camera direction remains the strongest option but multiple source-supported beats and relationships are available.",
+      "expected_route": "Create with documented keep-source-aligned decision",
+      "expected_behavior": [
+        "Document why no relocated camera produces enough narrative or aesthetic gain with reliable scene evidence.",
+        "Create at least three visibly divided panels and at least three shot scales while preserving one camera direction only as a direction, not as an exact repeated composition.",
+        "Generate real information gain through adjacent action/state, focal-owner change, object or relationship reveal, motif transformation, foreground, value ownership, time beat, or panel geometry.",
+        "Fail the result if it is merely wide, medium, and close crops of the same pose despite meeting the shot-scale count."
       ]
     }
   ]

@@ -27,7 +27,7 @@ Fail immediately when applicable:
 
 Fail immediately when applicable:
 
-- fewer than three panels, or panel boundaries are unreadable;
+- a single painterly hero image is returned instead of a comic page, fewer than three panels are present, or panel boundaries are unreadable;
 - panels are repeated crops/zooms of the same pose with no information delta;
 - no specific theme, state change, revelation, or meaningful visual contrast can be stated;
 - most adjacent panels differ only through effects, color cast, or panel border;
@@ -36,8 +36,8 @@ Fail immediately when applicable:
 - without an explicit alternate-medium request, the page is lineart-dominant, only lightly tinted, semi-photoreal, flat pasted-block, globally textured, or inconsistently finished instead of a coherent Painterly Comic Animation page;
 - the character and background use incompatible finish systems, or one panel is sketch/pencil/wash/photo-underpainted while another is fully painted;
 - the page is a screenshot/contact sheet of the source, or a wide/medium/close crop ladder with no authored concept;
-- every panel stays on the source-camera side and could be produced by cropping or zooming the original photograph;
-- a three-to-four-panel page has no reconstructed viewpoint, or a five-plus-panel page has fewer than two, unless camera fidelity was explicitly requested;
+- every panel preserves the source composition, pose, gaze, or environment distribution as an Edit Target and could be produced by cropping, zooming, or recoloring the original photograph;
+- camera changes are arbitrary, unsupported, or visibly damage story clarity, beauty, spatial credibility, or continuity merely to satisfy angle variety;
 - the opening and ending repeat the same camera side, subject scale, focal owner, action state, depth pattern, and scene information without a changed motif meaning;
 - the result is still photographic or only color-graded, with no visible contour, shape/plane, value-group, material, connected-brush, or page-grammar transformation;
 - tiny panels, tangled reading order, or decoration make the page unreadable;
@@ -56,7 +56,7 @@ Every applicable item must pass:
 - the outer page silhouette is a compact portrait `2:3` rectangle unless the user explicitly overrode it;
 - the panel topology reads as a two-dimensional page with visible lateral eye movement, not a long vertical strip;
 - at least three panels have clearly different macro silhouettes, value patterns, or information roles;
-- at least three shot scales are legible across the page and at least two camera heights/angles are visibly different;
+- at least three shot scales are legible across the page; camera heights/angles differ only when the Camera Opportunity Map found a real narrative or aesthetic gain;
 - the focal owner changes across at least three panels when the source permits (for example place, person/gesture, object/detail, animal/reaction, or environmental trace);
 - the most important beat owns enough area or contrast;
 - gutters and panel boundaries remain legible;
@@ -72,10 +72,10 @@ Every applicable item must pass:
 
 - Each panel has one clear focal owner and one narrative delta.
 - Adjacent panels differ on at least three visible axes, unless deliberate repetition is the concept.
-- The page contains at least three distinct shot scales, two camera heights/angles, and three focal owners when the source permits; otherwise document the source limitation and use the strongest available substitutes.
+- The page contains at least three distinct shot scales and three focal owners when the source permits; camera relocation is optional and is judged by narrative gain, aesthetic gain, and scene confidence rather than count.
 - No two panels reuse the same source composition; border, tint, crop, or zoom alone does not count as differentiation.
-- Reconstructed viewpoints preserve support, adjacency, landmark order, and depth logic while leaving uncertain zones simple or occluded.
-- The reconstructed-viewpoint quota is met and the page is not locked to the source-camera side.
+- Every selected camera relocation preserves support, adjacency, landmark order, and depth logic while leaving uncertain zones simple or occluded.
+- The Camera Opportunity Map records use/reject/keep-source-aligned decisions. A source-aligned page may pass when its panels have genuine re-staging and non-crop information gain.
 - Under Adjacent Moment, at least one source-supported action or prop state changes when the source and panel count allow it.
 - Actions connect plausibly; hands, limbs, props, gaze, and support/contact remain coherent.
 - Intentional off-panel subjects leave a readable clue or are documented by the beat structure.
@@ -100,15 +100,15 @@ Every applicable item must pass:
 Apply this gate unless the user explicitly requested flat cel, monochrome, pencil, watercolor, line art, or another medium. Every item must pass:
 
 - **Colour coverage:** every pictorial panel is fully and intentionally authored. Light gutters and source-motivated cloud, mist, spray, reflection, or highlights are valid; photo pixels, unfinished paper-white regions, and translucent-lineart underpainting are not.
-- **Mass and value structure:** roughly `5–9` interlocking large colour masses organize each panel, with three broad light/middle/dark value groups and local colour turns. The masses remain related across the page rather than pasted independently.
-- **Scene-owned colour:** dominant field, structural counter, focal accent, and neutral bridge roles are identifiable; the exposure key and main warm/cool relationship do not randomly reset between panels.
+- **Mass and value structure:** roughly `5–9` interlocking major colour masses organize a dominant panel and `3–6` organize a small support panel, with three broad light/middle/dark value groups and local colour turns. The masses are recomposed for each shot and remain related across the page rather than pasted independently.
+- **Scene-owned colour:** dominant field, structural counter, focal accent, and neutral bridge roles are identifiable; time, weather, and palette family stay coherent while value ownership, warm/cool emphasis, focal accent position, and local exposure may shift by panel.
 - **Plane authorship:** silhouettes and volumes are reconstructed through designed shapes, faceted planes, and selective foreshortening; outlines alone do not carry the form.
 - **Connected brush fields:** neighbouring forms share compatible brush direction, temperature, value, and boundary illumination so the subject belongs to the scene instead of looking cut out.
 - **Material locality:** hair, skin, cloth, grass, stone, metal, water, cloud, and other source materials use distinct mark scale/direction. A global brush, oil, noise, or paper overlay cannot substitute for material authorship.
 - **Edge hierarchy:** focal-owner edges are the sharpest and most contrasted, support edges are controlled, and contextual depth/atmosphere may soften. Uniform blur or uniformly hard edges fail.
 - **Character/environment match:** figure and background share one painterly completion family, with readable anime/comic anatomy and no photographic plate behind the character.
-- **Face geometry:** head axis, eye-line, gaze, expression, hair mass, and feature spacing remain stable across panels; painterly marks may enrich them but cannot move or replace them.
-- **Cross-panel lock:** contour role, mass/value logic, exposure key, palette roles, plane language, brush continuity, shared illumination, edge hierarchy, face model, background completion, border weight, and gutter colour remain stable throughout the page.
+- **Face identity:** facial proportions, relative feature spacing, age cues, distinctive features, and hair mass remain recognizable across panels. Head axis, eye-line, gaze, expression, mouth state, pose, and hand state may change intentionally with the storyboard and must remain anatomically coherent.
+- **Cross-panel lock:** contour role, area-adaptive mass/value logic, time/weather/palette family, plane language, brush continuity, shared illumination, edge hierarchy, face identity model, background completion, border weight, and gutter colour remain stable. Panel-specific camera, pose, gaze, value ownership, and exposure emphasis are not frozen.
 
 If the user explicitly requested flat cel, monochrome, pencil, watercolor, line art, or another medium, replace this gate with that medium's explicit Completion Lock; do not treat the painterly default as higher priority than the user.
 
@@ -158,7 +158,8 @@ Change only the failed module and preserve successful decisions.
 | Motif clutter | Keep one primary and only secondary motifs with distinct contact, landmark, or optical-echo jobs; return the rest to context |
 | Place topology drift | Reinstate landmark order, support/horizon, depth bands, and recurring environment anchors |
 | Repeated crops | Replace one redundant panel with a different beat, action state, angle, value shape, and narrative delta |
-| Source-camera lock | Rebuild the Scene World Model and move one or two shots into source-supported low, high, side, reverse, over-shoulder, object-POV, or overhead corridors |
+| Crop-only source-template repetition | Rebuild the beat and information roles first; then use the Camera Opportunity Map to keep or relocate each camera. If no move earns a place, create non-crop difference through action/state, focal owner, relation/detail, motif meaning, foreground, value ownership, or panel geometry |
+| Forced angle novelty | Return to the strongest story and beauty choices; reject unsupported low/high/reverse shots and keep a source-aligned direction where it is better |
 | Duplicate opening and ending | Keep the stronger bookend; rebuild the other with a different camera corridor, focal owner, action state, depth pattern, and motif meaning |
 | Weak or generic theme | Rebuild the proposition from one visible relationship/pressure and remove unrelated drama |
 | Padded panel count | Merge or delete beats without delta; resize the remaining panels by importance |
@@ -168,7 +169,7 @@ Change only the failed module and preserve successful decisions.
 | Still photographic | Rebuild contour, colour masses, three value groups, faceted planes, connected brush fields, and material marks; remove photo underpainting |
 | Lineart-dominant, pasted blocks, or global-texture finish | Restore fully authored interlocking colour masses, three broad value groups, selective structural contours, plane turns, shared illumination, and material-local marks; remove isolated stickers, global brush/noise, and washed-lineart dominance |
 | Character/background finish mismatch | Keep the successful focal design, then redraw the incompatible environment or subject into the same plane, brush, light, edge, texture, border, and palette-role system |
-| Mixed completion across panels | Freeze one Style Fingerprint and Completion Lock, then correct only the panels whose mass/value logic, plane language, brush continuity, edge hierarchy, face geometry, or background completion drifted |
+| Mixed completion across panels | Freeze one rendering-only Style Fingerprint and Completion Lock, then correct only the panels whose area-adaptive mass/value logic, plane language, brush continuity, edge hierarchy, face identity, or background completion drifted; do not restore copied pose, gaze, camera, or exposure maps |
 | Overdesigned effects | Remove nonessential glow, speed lines, textures, broken borders, and decorations; restore focal hierarchy |
 | Gibberish text | Remove all lettering or restore only exact verified copy in reserved areas |
 | Franchise residue | Remove names, motifs, costumes, props, logos, and page echoes; rederive design from the source and broad traits |

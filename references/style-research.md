@@ -68,10 +68,10 @@ Use this fingerprint when the user asks for a photo comic without selecting anot
 style_fingerprint:
   line_role: selective medium-dark structural contours; thinner interior marks; never lineart-only
   fill_coverage: fully authored colour field; no unpainted photo underpainting or translucent-lineart finish
-  macro_colour_masses: 5-9 interlocking large masses, recomposed per shot but related across panels
+  macro_colour_masses: 5-9 in a dominant panel and 3-6 in a small support panel; recomposed per shot but related across panels
   value_system: three broad light/middle/dark groups with local painterly turns
   colour_structure: dominant field / structural counter / focal accent / neutral bridge; one primary contrast axis
-  anatomy_and_face: simplified identity-faithful anime planes; preserve head axis, eye-line, gaze, expression, and feature spacing
+  anatomy_and_face: simplified identity-faithful anime planes; preserve facial proportions, relative feature spacing, age cues, and hair mass while allowing panel-specific head axis, eye-line, gaze, expression, pose, and hand state
   shape_and_plane: reconstructed graphic silhouettes and faceted planes with selective foreshortening
   brush_continuity: connected neighbouring brush fields and shared illumination at form boundaries
   material_finish: local mark grammar for hair, cloth, skin, grass, stone, metal, water, cloud, and other source materials
@@ -86,9 +86,11 @@ style_fingerprint:
 completion_lock:
   painterly_default_active: true unless explicitly overridden
   page_ratio: exact portrait 2:3; compact two-dimensional mosaic
-  macro_colour_mass_count: 5-9
+  macro_colour_mass_count: dominant panel 5-9; small support panel 3-6
   value_group_count: 3
-  exposure_key: selected once for the page
+  scene_light_family: coherent time, weather, and palette family; panel exposure/value emphasis may vary
+  source_ratio_inherited: false
+  source_composition_or_pose_locked: false
   connected_brush_fields: true
   shared_boundary_illumination: true
   faceted_plane_authorship: true
@@ -99,7 +101,8 @@ completion_lock:
   global_texture_overlay: false
   flat_cel_band_only: false
   photo_filter_or_underpainting: false
-  face_geometry_guard: true
+  face_identity_guard: true
+  panel_performance_can_change: true
   panel_finish_drift: false
 ```
 

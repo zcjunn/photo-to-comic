@@ -16,20 +16,30 @@ uncertain_zones: hidden detail that must stay simplified, occluded, or out of fr
 
 The source proves relationships, not a full 3D set. Move the camera only through supported corridors. Preserve landmark order and contact; do not invent specific hidden structures to complete a reverse view.
 
-Apply a viewpoint-novelty quota:
+Build a Camera Opportunity Map instead of a viewpoint quota:
 
-- three to four panels: at least one `reconstructed-source-consistent` viewpoint that cannot be produced by cropping the source;
-- five or more panels: at least two reconstructed viewpoints from meaningfully different camera corridors;
-- camera-faithful user requests: waive the quota and document that the source camera is protected.
+```yaml
+camera_candidates:
+  - mode: source-aligned / level-relocated / low / high-or-overhead / side / reverse / over-shoulder / object-level
+    narrative_gain: none / low / medium / high
+    aesthetic_gain: none / low / medium / high
+    scene_confidence: low / medium / high
+    decision: use / reject / keep source-aligned
+    reason: what new relationship, emotion, scale, or visual structure this camera contributes
+```
+
+- Use a relocated camera only when it has positive narrative or aesthetic gain and adequate scene confidence.
+- A strong source-aligned view may remain when it is the most effective shot; do not force low/high/reverse angles as a checklist.
+- The page still cannot be a crop ladder. When camera relocation is not useful, create information gain through action/state change, focal-owner change, relationship/detail reveal, motif transformation, foreground, or time beat.
 
 ## Build the Action Affordance Map
 
 List small changes supported by pose, gaze, held objects, support/contact, weather, reflections, and visible routes. Examples include turning the head, changing grip, tilting a held object, shifting weight, looking toward a reflection, or allowing hair/cloth/grass to answer wind.
 
-- Under Held Moment, keep the action state fixed and create difference through camera, relation, and detail.
+- Under Held Moment, keep the action state fixed and create difference through shot scale, relation, detail, focal owner, foreground, value ownership, panel geometry, or an earned camera change.
 - Under Adjacent Moment, a page of four or more panels should include at least one meaningful source-supported action or prop-state change when the evidence allows it.
 - Under Poetic Expansion, nonliteral movement still needs the same identity and scene anchors.
-- Never use a new action merely to make a prettier pose; it must advance attention, relationship, or the recurring motif.
+- A new action or pose may improve staging and beauty, but it must remain physically plausible, preserve identity/contact, and support the beat rather than becoming unrelated fashion posing.
 
 ## Visual Concept Brief
 
@@ -142,11 +152,11 @@ Treat the panel map as a storyboard, not a crop recipe. Use these as defaults an
 Hard requirements for automatic sequences:
 
 - Use at least three distinct shot scales across any page of three or more panels. A three-panel page must not be a simple wide/medium/close crop ladder; each scale must carry a different beat and focal owner.
-- Use at least two camera heights or angles across the page, and make the change visible in horizon, perspective, occlusion, or body orientation.
-- Use at least three distinct focal owners when the source permits: for example landmark/space, person/gesture, object/detail, animal/reaction, or environmental trace. Do not make every panel subject-centered.
-- Never reuse the source composition twice. A change of panel border, tint, texture, or zoom without a new camera position and narrative delta is still a repeated crop.
+- Give every panel an independent information role and use multiple focal owners when the source permits: for example landmark/space, person/gesture, object/detail, animal/reaction, or environmental trace. Do not make every panel subject-centered.
+- Treat level, low-angle, high-angle/overhead, side, reverse, over-shoulder, and object-level cameras as candidates, not quotas. Choose them when they strengthen narrative, spatial clarity, emotional force, or visual beauty; reject them when they only add arbitrary novelty.
+- The source photograph's exact composition may appear once when it is the strongest shot. Its general camera direction may recur when useful, but each panel must be genuinely re-staged; multiple crops, tints, textures, or zooms without a new narrative delta are failures.
 - If the source is a sparse landscape or still life, achieve shot diversity through scale, topographic angle, detail/relationship, foreground occlusion, and negative space; do not invent a protagonist or event merely to create coverage.
-- Meeting the angle count is not enough if every shot remains on the source-camera side. Satisfy the reconstructed-viewpoint quota and name each camera corridor.
+- If no relocated camera earns a place, document that choice and make the sequence distinct through beat, action/state, focal relationship, motif meaning, value ownership, and panel geometry. “No forced angle change” never permits a crop-only page.
 
 ## Opening and Ending Contrast
 
@@ -173,15 +183,15 @@ Reject any direction described only as cinematic color grading, lens effects, HD
 
 ## Style Fingerprint and Painterly Completion Lock
 
-Style is not allowed to re-roll independently for each photograph or panel. Unless the user explicitly requests another medium, freeze the Painterly Comic Animation fingerprint from `style-research.md` and `painterly-comic-adapter.md` before the Panel Difference Map.
+Style is not allowed to re-roll independently for each photograph or panel. Build the Panel Difference Map and Camera Opportunity Map first; then compile the Painterly Comic Animation fingerprint from `style-research.md` and `painterly-comic-adapter.md` around those authored shots. The rendering system serves the sequence and may not overwrite its cameras, poses, performances, or panel geometry.
 
 ```yaml
 style_fingerprint:
   contour_hierarchy: selective structural contours; thinner interior marks; line never the whole surface
-  macro_colour_masses: 5-9 interlocking large masses
+  macro_colour_masses: 5-9 in a dominant panel; 3-6 in a small support panel; always area-adaptive
   value_groups: 3 broad light/middle/dark groups with local colour turns
   colour_roles: dominant field / structural counter / focal accent / neutral bridge
-  face_and_anatomy: simplified identity-faithful anime planes; head axis/eye-line/gaze/feature spacing guarded
+  face_and_anatomy: simplified identity-faithful anime planes; facial proportions, relative feature spacing, age cues, and hair mass guarded
   shape_and_plane: reconstructed graphic silhouettes and faceted planes
   brush_continuity: connected neighbouring brush fields with shared boundary illumination
   material_texture: local mark grammar by material, never global texture
@@ -191,18 +201,21 @@ style_fingerprint:
 completion_lock:
   painterly_default_active: true unless explicitly overridden
   page_ratio: exact portrait 2:3 compact mosaic
-  exposure_key: selected once for the page
+  scene_light_family: coherent time, weather, and palette family; panel exposure/value emphasis may vary
+  source_ratio_inherited: false
+  source_composition_or_pose_locked: false
   line_is_structure_not_surface: true
   character_background_finish_match: true
   global_texture_overlay: false
   flat_cel_band_only: false
   photo_filter_or_underpainting: false
-  face_geometry_guard: true
+  face_identity_guard: true
+  panel_performance_can_change: true
   panel_finish_drift: false
 ```
 
-- Let the source change hue roles, focal accent, weather, and energy, but preserve the same macro-mass count, value-group logic, exposure key, plane language, brush continuity, material hierarchy, and face packet.
-- At thumbnail size, the page must be organized first by interlocking colour/value shapes. A detail panel may carry denser bristles, cracks, droplets, seams, or hardware, but it keeps the same light direction, palette roles, and completion family.
+- Let the source change hue roles, focal accent, weather, and energy. Preserve one palette family, three-value logic, plane language, brush continuity, material hierarchy, and identity model, while adapting mass count, value ownership, exposure emphasis, and image-space light pattern to each panel's size and camera.
+- At thumbnail size, the page must be organized first by interlocking colour/value shapes. A dominant panel may need `5-9` major masses while a small support panel may need only `3-6`. Detail panels may carry denser bristles, cracks, droplets, seams, or hardware, but all panels keep the same palette family and completion language.
 - Connect neighbouring forms with related brush direction, temperature, value, and shared illumination. Keep edges sharpest at the focal owner, controlled in support areas, and softer only in contextual depth or atmosphere.
 - Reject flat pasted colour blocks, global oil/noise texture, uniform blur, photo underpainting, lineart-only panels, and clean anime figures over photographic backgrounds.
 - If the user explicitly requests flat cel, opaque hard-edge, black-and-white, pencil, watercolor, or another medium, replace this fingerprint with the requested medium's explicit Completion Lock while preserving the page and sequence contracts.
@@ -220,8 +233,12 @@ panels:
     beat_role: orientation / attention / preparation / action / reaction / detail / counterpoint / aftermath / echo
     narrative_delta: what changes or is revealed
     shot_scale: extreme wide / wide / medium / close / extreme detail
-    angle: level / high / low / overhead / canted / over-shoulder / object POV
-    viewpoint_mode: source-aligned / reconstructed-source-consistent
+    angle: level / high / low / overhead / canted / side / reverse / over-shoulder / object POV
+    viewpoint_mode: source-aligned / relocated-source-consistent
+    camera_decision: use / reject / keep source-aligned
+    narrative_gain: none / low / medium / high
+    aesthetic_gain: none / low / medium / high
+    scene_confidence: low / medium / high
     camera_corridor: where the imagined camera is relative to the source camera and subjects
     viewpoint_evidence: visible topology that makes this position plausible
     focal_owner: subject, object, landmark, or void
@@ -251,12 +268,15 @@ Before prompting, run this compact audit:
 
 ```yaml
 distinct_shot_scales: 3 or more
-distinct_angles_or_heights: 2 or more
 distinct_focal_owners: 3 or more when source permits
 same_composition_reused: false
+camera_opportunity_map_completed: true
+camera_variation_is_story_driven: true
+forced_angle_quota: false
+crop_only_panels: false
 comic_transformation_operations: 4 or more
 painterly_comic_default_active: true unless explicitly overridden
-macro_colour_masses: 5-9 interlocking masses
+macro_colour_masses: dominant panel 5-9; small support panel 3-6
 value_group_count: 3 broad groups
 colour_roles_locked: true
 connected_brush_fields: true
@@ -270,9 +290,10 @@ character_background_finish_match: true
 flat_cel_only_or_semi_photoreal_drift: false
 global_texture_overlay: false
 photo_underpainting: false
-face_geometry_guard: true
-reconstructed_viewpoints: at least 1 for 3–4 panels; at least 2 for 5+ panels
-source_camera_side_locked: false unless explicitly requested
+face_identity_guard: true
+panel_performance_can_change: true
+source_aligned_view_allowed_when_best: true
+source_composition_pose_or_gaze_repeated_in_every_panel: false
 opening_ending_visible_differences: 4 or more when they share a scale
 portrait_ratio_exact: 2:3 unless explicitly overridden
 single_column_stack: false for 4+ panels unless scroll is explicitly requested
@@ -296,13 +317,14 @@ Hold constant across panels:
 - subject and object count unless an omission is intentional and documented;
 - landmark order, support surfaces, recurring props, weather/time window;
 - line family, palette roles, anatomy model, texture family, border/gutter language;
-- Style Fingerprint and Completion Lock: macro colour masses, three value groups, exposure key, plane language, connected brush fields, shared illumination, edge hierarchy, face/skin/hair simplification, background completion, and material-local marks (or the explicit alternate-medium lock);
+- Style Fingerprint and Completion Lock: area-adaptive macro colour masses, three-value logic, coherent time/weather/palette family, plane language, connected brush fields, shared illumination, edge hierarchy, identity-faithful face/hair simplification, background completion, and material-local marks (or the explicit alternate-medium lock);
 - one recurring visual motif derived from the photo, if useful.
 - selected prop recognition silhouettes, visible component stacks, count logic, materials/patterns, contact/attachment, semantic locks, and occluded unknowns.
 
 Vary deliberately:
 
-- time beat, action state, shot scale, angle, subject scale, crop, foreground, eye path;
+- time beat, action state, shot scale, camera position when useful, subject scale, crop, foreground, eye path;
+- head axis, eye-line, gaze, expression, pose, hand state, and image-space light/value emphasis when the storyboard calls for them;
 - panel size, gutter pause, value ownership, accent color placement, edge density;
 - which part of the relationship is revealed.
 - permitted prop state, orientation, screen scale, contact, reflection, material response, or motif meaning.

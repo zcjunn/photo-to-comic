@@ -39,12 +39,12 @@ inference:
   emotional_residue: what remains after factual description
   plausible_adjacent_moments: source-consistent possibilities, clearly labeled inference
   plausible_action_variants: small pose, gaze, hand, prop, or environmental states supported by evidence
-  plausible_reconstructed_viewpoints: new camera positions that preserve the scene-world topology
+  camera_opportunities: optional new camera positions scored for narrative gain, aesthetic gain, and scene confidence
   unresolved_question: one useful ambiguity
   ambiguous_prop_readings: visible form versus possible identities; never collapse uncertainty into fact
 protected_continuity:
   identities_and_count: what must not drift
-  appearance_bible: face/hair/clothes/markings/object geometry
+  appearance_bible: facial proportions, relative feature spacing, age cues, hair mass, clothes, markings, object geometry
   relationship_order: left-right, touch, gaze, possession, relative scale
   place_bible: landmark adjacency, horizon/support, depth bands, recurring color cues
   prop_motif_bibles: selected count, silhouette, visible component stack, material, pattern, contact, topology, and unknowns
@@ -105,10 +105,11 @@ detail_hierarchy: recognition in wide view / structure in medium view / material
 The source camera is one observation point inside a larger scene. Preserve the world relationships it proves, not its exact composition unless the user requests camera fidelity.
 
 - Infer only coarse spatial structure: support, adjacency, depth order, routes, repeated landmarks, and where a camera could plausibly stand or look.
-- Mark each proposed viewpoint as `source-aligned` or `reconstructed-source-consistent`. A reconstructed view must cite the visible relationship that makes it plausible.
+- Build a Camera Opportunity Map. Mark each candidate as `source-aligned` or `relocated-source-consistent`; score `narrative_gain`, `aesthetic_gain`, and `scene_confidence`; then choose `use`, `reject`, or `keep source-aligned` with one reason.
 - New camera positions may include low water/ground level, grass/object POV, high or overhead, behind/over-shoulder, reverse angle, or a side view when the scene provides space for them.
+- These are candidates, not quotas. Keep the source-aligned direction whenever it tells the story more beautifully or clearly. If no relocation earns a place, create panel difference through shot scale, action/state, focal owner, relationship/detail reveal, motif meaning, foreground, time beat, value ownership, or panel geometry.
 - Do not reveal precise hidden faces, rooms, text, architecture, object backs, or geography. Crop, silhouette, simplify, or occlude uncertain zones.
-- A page of three to four panels should contain at least one reconstructed viewpoint; a page of five or more should contain at least two, unless documentary camera fidelity is explicitly requested.
+- Never accept a crop ladder: source-aligned panels must still be newly staged comic beats with independent information roles rather than repeated crops or zooms.
 
 ## Action Affordance Map
 
@@ -116,7 +117,7 @@ Treat the photographed pose as one state, not the only permitted state.
 
 - Record what can plausibly change within seconds: gaze, head turn, hand position, grip, prop tilt, weight shift, seated/standing posture, hair/clothing response, reflection, shadow, or nearby environmental motion.
 - Tie every proposed action to a visible cue or physical affordance. A held umbrella may tilt or lower; a seated subject may turn or shift; a visible path may support one step. Do not invent an unrelated task or destination.
-- Under Held Moment, keep the action state fixed but move the camera. Under Adjacent Moment, use at least one meaningful source-supported action change when the page has four or more panels and the source affords it.
+- Under Held Moment, keep the action state fixed and use scale, relation, detail, foreground, environmental response, or an earned camera change to create difference. Under Adjacent Moment, use at least one meaningful source-supported action change when the page has four or more panels and the source affords it.
 
 ## Narrative Permission
 
@@ -124,7 +125,7 @@ Choose one before writing beats.
 
 ### Held Moment
 
-Use for documentary, memorial, product, architecture, or a request to preserve the actual moment. Decompose one moment through reconstructed viewpoint, scale, detail, reaction, or environmental echo. Do not invent a before/after event, but do not lock every panel to the source camera.
+Use for documentary, memorial, product, architecture, or a request to preserve the actual moment. Decompose one moment through scale, detail, relation, reaction, environmental echo, or an earned camera relocation. Do not invent a before/after event. Keeping one camera direction is allowed when it is strongest, but repeated crops are not.
 
 ### Adjacent Moment — default
 
@@ -155,7 +156,7 @@ Reject themes that are only `healing`, `nostalgia`, `cinematic`, `romantic`, `ad
 
 Write a short cross-panel bible before prompting:
 
-- **Character model:** face shape, hair silhouette, clothing layers/colors, accessories, body scale, pet markings.
+- **Character identity model:** facial proportions, relative feature spacing, age cues, hair silhouette/mass, clothing layers/colors, accessories, body scale, pet markings. Do not freeze head axis, eye-line, gaze, expression, mouth state, pose, or hand state; those are panel-specific performance variables.
 - **Prop/Motif model:** use the selected cards above; protect recognition silhouette, visible component stack, count logic, material, pattern, contact, topology, permitted states, and occluded unknowns.
 - **Place model:** support surfaces, adjacency graph, landmark order, near/mid/far bands, important openings/routes, camera corridors, uncertain zones, and recurring weather/light.
 - **Style model:** line family, value grouping, palette roles, texture, anatomy exaggeration, panel border/gutter language.
