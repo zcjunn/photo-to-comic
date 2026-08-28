@@ -1,7 +1,7 @@
 {
   "skill": "photo-to-comic",
-  "version": "1.6.0",
-  "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, source-supported camera and action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a preferred fully colored cel-comic Style Fingerprint and Completion Lock, explicit medium overrides, and rejection of long-scroll, single-column, camera-locked, repeated-crop, prop-drift, two-panel, franchise-imitation, lineart-dominant, semi-photoreal, or mixed-finish failures.",
+  "version": "1.7.0",
+  "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, source-supported camera and action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a Painterly Comic Animation Style Fingerprint and Completion Lock adapted from painterly-frame methods, explicit flat-cel/monochrome overrides, and rejection of long-scroll, single-column, camera-locked, repeated-crop, prop-drift, two-panel, franchise-imitation, lineart-dominant, pasted-block, global-texture, semi-photoreal, or mixed-finish failures.",
   "cases": [
     {
       "id": "quiet-station-portrait-adaptive",
@@ -359,7 +359,7 @@
       "expected_route": "Create with explicit style calibration",
       "expected_behavior": [
         "Let the user's explicit preference outrank automatic trend selection and other evergreen families.",
-        "Extract only abstract traits such as contour hierarchy, opaque fill coverage, two-to-four cel value steps, color-mass structure, anime facial simplification, material-local texture, and matched foreground/background completion.",
+        "Extract only abstract traits such as contour hierarchy, authored colour-mass structure, anime facial simplification, material-local texture, edge hierarchy, and matched foreground/background completion; preserve the requested preference over the default.",
         "Do not copy the preference page's person, umbrella, scenery, panel arrangement, poses, or protected fictional content into the new sequence.",
         "Attach only the current source photo to generation unless the user explicitly authorizes the preference image as an additional generation reference."
       ]
@@ -370,10 +370,10 @@
       "input_contract": "Source photo plus a multi-panel result with thin dominant lines, pale translucent washes, partly unfilled backgrounds, photographic gradients, and little cel-value separation.",
       "expected_route": "Review",
       "expected_behavior": [
-        "Fail the Finished-Color Style Gate even if source continuity, story beats, and page layout are otherwise strong.",
-        "Identify incomplete opaque fill coverage, weak color-mass hierarchy, insufficient cel-value grouping, photographic gradient dependence, and line detail overpowering colored shapes at thumbnail size.",
-        "Require medium-dark structural contours, complete opaque color, two-to-four stable cel steps, simplified anime skin and grouped hair, fully colored backgrounds, and material-local texture.",
-        "Preserve successful story, camera plan, motif roles, and layout while redrawing the page in one frozen Style Fingerprint."
+        "Fail the Painterly Comic Continuity Gate even if source continuity, story beats, and page layout are otherwise strong.",
+        "Identify photo underpainting, pasted colour blocks, weak 5–9 mass/three-value structure, missing faceted planes or connected brush fields, uniform edge treatment, and line detail overpowering authored colour shapes at thumbnail size.",
+        "Require selective structural contours, fully authored colour, three broad value groups, scene-owned colour roles, faceted planes, shared illumination, material-local marks, and a matched character/background finish.",
+        "Preserve successful story, camera plan, motif roles, and layout while redrawing the page in one frozen Painterly Comic Animation Style Fingerprint."
       ]
     },
     {
@@ -383,7 +383,7 @@
       "expected_route": "Review",
       "expected_behavior": [
         "Fail cross-panel style continuity because panel-to-panel medium drift is a sequence failure, not harmless variation.",
-        "Compare contour weight, fill opacity, value-step count, facial simplification, background finish, texture locality, and soft-edge budget against the frozen Completion Lock.",
+        "Compare contour role, colour-mass/value logic, plane language, brush continuity, face geometry, background finish, material locality, and edge hierarchy against the frozen Completion Lock.",
         "Keep intentional differences in viewpoint, action, scale, weather, and local hue while rejecting changes to the rendering system itself.",
         "Preserve successful finished panels and redraw only inconsistent panels unless the frozen fingerprint is absent from the entire page."
       ]
@@ -394,10 +394,66 @@
       "input_contract": "One source photo plus an explicit monochrome manga request.",
       "expected_route": "Create with explicit medium override",
       "expected_behavior": [
-        "Honor the explicit monochrome request instead of forcing the Finished Luminous Cel Comic house default.",
+        "Honor the explicit monochrome request instead of forcing the Painterly Comic Animation house default.",
         "Build a monochrome-specific Completion Lock for black-shape hierarchy, controlled screentone or hatch roles, stable contour logic, background completion, and cross-panel consistency.",
         "Keep the page fully resolved rather than treating monochrome as unfinished pencil sketch or pale gray lineart.",
         "Retain all source, layout, story, camera, motif, continuity, and anti-imitation contracts that do not depend on color."
+      ]
+    },
+    {
+      "id": "painterly-frame-methods-with-comic-sequence",
+      "request": "结合 painterly-frame 的画面风格控制和之前的照片漫画分镜要求，把这张照片做成漫画组图。",
+      "input_contract": "One source photo with enough environment and a person or salient object to support a multi-panel sequence.",
+      "expected_route": "Create with Painterly Comic Animation default",
+      "expected_behavior": [
+        "Read painterly-frame as abstract methods only: composition/exposure lock, three value groups, scene-owned colour roles, 5–9 interlocking masses, faceted planes, connected brush fields, shared illumination, material-local marks, and focal/support/context edge hierarchy.",
+        "Preserve the photo-to-comic sequence contract: at least three panels, exact portrait 2:3 compact mosaic, multiple shot scales, at least two angle/height changes, reconstructed viewpoints, action or state delta, bookend contrast, and one coherent motif arc.",
+        "Use one frozen Painterly Comic Animation Style Fingerprint and Completion Lock across every panel; keep anime/comic anatomy readable without reverting to flat cel bands, pasted cutouts, global texture, or a photo filter.",
+        "Attach only the source photo to generation and keep the adapter self-contained without importing another skill's license or runtime dependency."
+      ]
+    },
+    {
+      "id": "painterly-style-does-not-collapse-sequence",
+      "request": "画面要有绘画感，但仍要像一页真正的漫画组图，不要所有分格都只是同一张图的不同裁切。",
+      "input_contract": "One source photo plus a proposed painterly page whose panels are visually similar crops.",
+      "expected_route": "Create or Review with sequence-first painterly control",
+      "expected_behavior": [
+        "Keep the painterly surface subordinate to authored storytelling: every panel needs a role, information delta, shot scale, camera corridor, focal owner, and transition.",
+        "Require at least three shot scales, two camera heights/angles, the reconstructed-viewpoint quota, and at least three visible adjacent-panel differences; replace crop-only panels with source-supported actions, foregrounds, viewpoints, or relationship details.",
+        "Retain exact portrait 2:3 two-dimensional page geometry, lateral reading moves, dominant-panel hierarchy, and opening/ending contrast while freezing one colour/plane/brush system."
+      ]
+    },
+    {
+      "id": "reject-global-painterly-filter-and-pasted-blocks",
+      "request": "检查这页为什么像照片上套了一层油画纹理，或者像贴了几块颜色，而不是统一绘画动画漫画。",
+      "input_contract": "Source photo plus a page with recognizable photo underpainting, global canvas texture, flat pasted colour blocks, uniform blur, and unrelated panel finishes.",
+      "expected_route": "Review",
+      "expected_behavior": [
+        "Fail the Painterly Comic Continuity Gate even if the page has attractive colours or correct panel count.",
+        "Identify absent 5–9 interlocking masses, weak three-group value structure, missing faceted planes, broken boundary illumination, global brush/noise overlay, uniform edge treatment, and sticker-like subject/background separation.",
+        "Preserve successful story, camera plan, motif roles, and 2:3 layout while rebuilding only the colour/plane/brush/material/edge completion system."
+      ]
+    },
+    {
+      "id": "painterly-face-geometry-guard",
+      "request": "画面绘画感可以加强，但人物的眼线、视线、表情和脸部比例在不同分格里要保持同一个人。",
+      "input_contract": "One source portrait and a painterly comic page where the head axis, eye-line, gaze, expression, or feature spacing drifts between panels.",
+      "expected_route": "Review or targeted correction",
+      "expected_behavior": [
+        "Fail the face-geometry and cross-panel continuity checks while leaving valid page topology and painterly surface decisions intact.",
+        "Restore the head axis, eye-line, gaze, expression, hair mass, and feature spacing from the source evidence; allow painterly planes and local marks without changing identity.",
+        "Use at most one targeted correction and do not solve identity drift by reducing the whole page to a photographic or lineart finish."
+      ]
+    },
+    {
+      "id": "explicit-flat-cel-overrides-painterly-default",
+      "request": "这次不要绘画笔触，明确做成之前那种完整明亮的赛璐璐彩色漫画页。",
+      "input_contract": "One source photo plus an explicit request for the earlier flat-cel completion mode.",
+      "expected_route": "Create with explicit alternate medium",
+      "expected_behavior": [
+        "Honor the explicit flat-cel request instead of forcing Painterly Comic Animation.",
+        "Use complete opaque fills, two-to-four stable grouped cel values, medium-dark structural contours, simplified anime anatomy, fully coloured backgrounds, and local material texture under one alternate Completion Lock.",
+        "Keep all non-medium contracts: at least three panels, exact portrait 2:3 mosaic, camera and action invention, motif continuity, face geometry, and anti-imitation rules."
       ]
     }
   ]

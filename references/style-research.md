@@ -53,15 +53,61 @@ Use this order:
 
 1. explicit user medium and style constraints;
 2. a user-supplied preference image translated into abstract visual decisions;
-3. the Finished Luminous Cel Comic house default;
-4. current trend research for compatible refinements such as pacing, contrast, or palette behavior;
-5. another evergreen family only when the user requests it or the default is genuinely incompatible with the brief.
+3. the Painterly Comic Animation combined house default;
+4. the Finished Luminous Cel Comic alternate when flat cel/opaque hard-edge rendering is explicit;
+5. current trend research for compatible refinements such as pacing, contrast, or palette behavior;
+6. another evergreen family only when the user requests it or the default is genuinely incompatible with the brief.
 
 When a preference image is supplied, separate **content** from **style**. Do not carry over its person, prop, location, clothing, page skeleton, motif, or exact palette. Record only transferable decisions such as contour hierarchy, fill opacity, value-step count, color separation, facial simplification, background finish, material texture, border weight, and gutter language. Treat the preference image as analysis-only unless the user explicitly authorizes it as a generation input.
 
-## Finished Luminous Cel Comic — House Default
+## Painterly Comic Animation — Combined House Default
 
-Use this fingerprint when the user asks for a photo comic and does not explicitly select another medium:
+Use this fingerprint when the user asks for a photo comic without selecting another medium. It keeps the earlier page and sequence contracts, then applies painterly-frame-inspired colour, plane, brush, material, and edge controls in an original comic-specific combination.
+
+```yaml
+style_fingerprint:
+  line_role: selective medium-dark structural contours; thinner interior marks; never lineart-only
+  fill_coverage: fully authored colour field; no unpainted photo underpainting or translucent-lineart finish
+  macro_colour_masses: 5-9 interlocking large masses, recomposed per shot but related across panels
+  value_system: three broad light/middle/dark groups with local painterly turns
+  colour_structure: dominant field / structural counter / focal accent / neutral bridge; one primary contrast axis
+  anatomy_and_face: simplified identity-faithful anime planes; preserve head axis, eye-line, gaze, expression, and feature spacing
+  shape_and_plane: reconstructed graphic silhouettes and faceted planes with selective foreshortening
+  brush_continuity: connected neighbouring brush fields and shared illumination at form boundaries
+  material_finish: local mark grammar for hair, cloth, skin, grass, stone, metal, water, cloud, and other source materials
+  edge_hierarchy: focal sharp; support controlled; context softer only for depth/atmosphere
+  background_finish: fully painted and simplified to the same completion family as the character
+  border_and_gutter: stable medium-dark frames and clean light gutters
+```
+
+### Painterly Completion Lock
+
+```yaml
+completion_lock:
+  painterly_default_active: true unless explicitly overridden
+  page_ratio: exact portrait 2:3; compact two-dimensional mosaic
+  macro_colour_mass_count: 5-9
+  value_group_count: 3
+  exposure_key: selected once for the page
+  connected_brush_fields: true
+  shared_boundary_illumination: true
+  faceted_plane_authorship: true
+  material_local_marks: true
+  focal_support_context_contrast: true
+  line_is_structure_not_surface: true
+  character_background_finish_match: true
+  global_texture_overlay: false
+  flat_cel_band_only: false
+  photo_filter_or_underpainting: false
+  face_geometry_guard: true
+  panel_finish_drift: false
+```
+
+At thumbnail size, large colour/value shapes establish the page before brush detail. Internal colour turns and planes must describe volume; a global oil/noise texture, equal-detail treatment, uniform blur, or pasted subject cutout is a failure. Keep comic page rhythm, readable anatomy, and motif hierarchy visible beneath the paint.
+
+## Finished Luminous Cel Comic — Alternate Flat-Cel Mode
+
+Use this fingerprint only when the user explicitly asks for flat cel, opaque hard-edge fills, or the earlier finished-color direction:
 
 ```yaml
 style_fingerprint:
@@ -159,7 +205,7 @@ When the user asks for 漫画、动漫、anime、manga, or a comic page, treat t
 - screentone, dry brush, paper, or another declared material system;
 - panel composition with camera changes and readable gutters.
 
-Choose at least four of these operations and state them in the Style Bible. Do not describe the result as “realistic comic,” “cinematic photo with comic colors,” or “anime filter” unless the user explicitly asks for a hybrid; even then, keep the comic operations visible at thumbnail size. A style direction that cannot be recognized without zooming into texture fails the comic-transformation gate.
+For the Painterly Comic Animation default, choose at least four operations including authored colour/value masses, faceted planes, connected brush fields, material-local marks, selective contours, and focal/context edge hierarchy; for the alternate flat-cel mode, choose grouped cel values and opaque hard-edge fills instead. State the operations in the Style Bible. Do not describe the result as “realistic comic,” “cinematic photo with comic colors,” or “anime filter” unless the user explicitly asks for a hybrid; even then, keep the comic operations visible at thumbnail size. A style direction that cannot be recognized without zooming into texture fails the comic-transformation gate.
 
 ## Originality Isolation Check
 

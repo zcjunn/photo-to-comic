@@ -7,7 +7,7 @@
 
 Photo to Comic 是一个面向 Codex 的照片漫画化 Skill。它不会把同一张照片反复裁切，也不会只叠加“动漫滤镜”；它会先阅读照片中的人物、空间、动作、道具与情绪关系，再设计可信的新机位和相邻时刻，最终生成一张紧凑、完整上色的多格漫画页。
 
-> Turn one photograph into an authored multi-panel comic page with source-grounded storytelling, camera invention, motif continuity, and a stable finished-color cel-comic style.
+> Turn one photograph into an authored multi-panel comic page with source-grounded storytelling, camera invention, motif continuity, and a stable Painterly Comic Animation style.
 
 ## 它解决什么问题
 
@@ -31,7 +31,8 @@ Photo to Comic 把这些问题变成可检查的工作合同，而不是只依�
 - **视觉母题系统**：从伞、鞋、倒影、草穗、电塔、背带或其他显著元素中选择主母题与次级母题。
 - **道具完成度锁**：统一道具的数量、轮廓、构件、材质、接触方式和跨格细节层级。
 - **紧凑漫画页**：默认生成准确竖版 `2:3` 多列拼页，而不是单列长图。
-- **完整彩色动漫风格**：默认使用完整不透明铺色、2–4 级赛璐璐明暗、结构性轮廓和统一的角色/背景完成度。
+- **绘画动画漫画风格**：默认使用 `5–9` 个互相咬合的大色形、三组明度、形面重构、连接笔触、共享光照、材质专属笔触和焦点边缘层级，保持清晰的动漫人物与漫画页节奏。
+- **显式平涂备用模式**：用户要求赛璐璐、硬边或不透明平涂时，切换为完整彩色 `Finished Luminous Cel Comic`，而不是让绘画笔触与平涂规则混杂。
 - **双重质量检查**：分别检查照片连续性与漫画分镜创作是否成立。
 
 ## 默认输出
@@ -41,7 +42,8 @@ Photo to Comic 把这些问题变成可检查的工作合同，而不是只依�
 - 默认宽高比为竖版 `2:3`；
 - 四格以上采用多列、嵌格或错落拼页；
 - 默认无文字，避免乱码；
-- 默认采用 `Finished Luminous Cel Comic` 完整彩色赛璐璐风格；
+- 默认采用 `Painterly Comic Animation` 绘画动画漫画风格：大色形先行、三组明度、连接笔触与材质化局部笔触；
+- 用户明确要求赛璐璐/硬边平涂时，切换到 `Finished Luminous Cel Comic` 备用模式；
 - 用户明确要求黑白、水彩、铅笔或其他媒介时，切换为对应的统一完成度规则。
 
 ## 工作流程
@@ -53,6 +55,8 @@ Photo to Comic 把这些问题变成可检查的工作合同，而不是只依�
   → Theme & State Change：确定主题与短时变化
   → Prop/Motif Bible：选择主导道具或视觉母题
   → Panel Difference Map：为每格分配镜头、动作和信息增量
+  → Composition/Colour Lock：冻结页形、曝光、色彩角色与明度分组
+  → Painterly Render Contract：形面、连接笔触、共享光照、材质与边缘层级
   → Style Fingerprint + Completion Lock：冻结全页画风与完成度
   → 生成一张 2:3 多列漫画页
   → Source Continuity + Sequence Authorship 双质量门
@@ -100,6 +104,7 @@ photo-to-comic/
 └── references/
     ├── source-story-card.md         # 源照片证据、场景世界与连续性
     ├── style-research.md            # 风格研究、Style Fingerprint
+    ├── painterly-comic-adapter.md  # painterly-frame 方法的漫画化适配
     ├── sequence-engine.md           # 自适应分格、机位与版式引擎
     ├── prompt-compiler.md           # 生产提示词编译和预检
     └── quality-gate.md              # 双质量门与定向修正规则
@@ -111,8 +116,9 @@ photo-to-comic/
 2. 连续性保护人物、物件和空间世界，而不是保护原始镜头。
 3. 新镜头必须由照片可见的空间关系支持。
 4. 每格必须改变信息、动作、视点或母题意义。
-5. 线条服务于结构，色块和分组明暗承担最终完成度。
-6. 参考流行漫画时只提取通用视觉语言，不复制具体作者、角色、作品世界或页面。
+5. 线条服务于结构；大色形、分组明度、形面与连接笔触共同承担最终完成度。
+6. 每格可以改变镜头、动作和景别，但不能改变共享的曝光、色彩角色、笔触场、材质语法和脸部几何。
+7. 参考流行漫画或 painterly-frame 方法时只提取通用视觉语言，不复制具体作者、角色、作品世界或页面。
 
 ## 隐私与参考图边界
 
@@ -130,7 +136,7 @@ photo-to-comic/
 python ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py ~/.codex/skills/photo-to-comic
 ```
 
-行为评测位于 [`evals/evals.json`](evals/evals.json)，覆盖最低三格、自由机位、首尾去重、固定 2:3 拼页、道具完成度、歧义物件、完整彩色风格和显式媒介覆盖等情况。
+行为评测位于 [`evals/evals.json`](evals/evals.json)，共 39 个案例，覆盖最低三格、自由机位、首尾去重、固定 2:3 拼页、道具完成度、歧义物件、Painterly Comic Animation 连续性、显式平涂/黑白媒介覆盖等情况。
 
 ## License
 

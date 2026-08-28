@@ -33,13 +33,13 @@ Fail immediately when applicable:
 - most adjacent panels differ only through effects, color cast, or panel border;
 - panel count is padded and can be reduced without losing information;
 - characters and setting change style from panel to panel;
-- without an explicit alternate-medium request, the page is lineart-dominant, only lightly tinted, semi-photoreal, or inconsistently finished instead of a complete opaque-color cel comic;
-- the character and background use incompatible finish systems, or one panel is sketch/pencil/wash while another is fully colored;
+- without an explicit alternate-medium request, the page is lineart-dominant, only lightly tinted, semi-photoreal, flat pasted-block, globally textured, or inconsistently finished instead of a coherent Painterly Comic Animation page;
+- the character and background use incompatible finish systems, or one panel is sketch/pencil/wash/photo-underpainted while another is fully painted;
 - the page is a screenshot/contact sheet of the source, or a wide/medium/close crop ladder with no authored concept;
 - every panel stays on the source-camera side and could be produced by cropping or zooming the original photograph;
 - a three-to-four-panel page has no reconstructed viewpoint, or a five-plus-panel page has fewer than two, unless camera fidelity was explicitly requested;
 - the opening and ending repeat the same camera side, subject scale, focal owner, action state, depth pattern, and scene information without a changed motif meaning;
-- the result is still photographic or only color-graded, with no visible ink, shape, value-group, material, or page-grammar transformation;
+- the result is still photographic or only color-graded, with no visible contour, shape/plane, value-group, material, connected-brush, or page-grammar transformation;
 - tiny panels, tangled reading order, or decoration make the page unreadable;
 - the default output is not exact portrait `2:3`, is needlessly extra-tall, or reads as a `9:16`/scroll screenshot without an explicit user request;
 - a four-plus-panel page is a single vertical column, or every panel is a full-width horizontal band stacked from top to bottom;
@@ -65,7 +65,7 @@ Every applicable item must pass:
 - the primary motif, when selected, has a stable recognition silhouette and visible page-level emphasis; secondary motifs remain subordinate and legible;
 - no panel looks like the same photo copied again.
 - the page reads as a deliberate comic redraw at thumbnail size rather than a photograph with a filter.
-- under the default house style, opaque colored silhouettes and grouped values organize the page before thin line detail; it does not read as paper, pencil, or ink with color washed behind it.
+- under the default house style, authored colour silhouettes and three grouped values organize the page before thin line detail; interlocking masses, faceted planes, and connected brush fields are visible without reading as pasted blocks, paper, pencil, or ink with color washed behind it.
 - the opening and ending have unmistakably different macro compositions and narrative jobs; if they share a scale, at least four visible axes differ.
 
 ## Panel-Scale Gate
@@ -95,25 +95,31 @@ Every applicable item must pass:
 - Secondary motifs each perform a different function such as contact witness, scale/direction anchor, or optical echo; remove any motif that only adds clutter.
 - Material response is specific and consistent: wet metal, fabric, glass, leather, painted plastic, water reflection, or worn stone should not collapse into the same generic glossy texture.
 
-## Finished-Color Style Gate
+## Painterly Comic Continuity Gate
 
-Apply this gate unless the user explicitly requested another medium. Every item must pass:
+Apply this gate unless the user explicitly requested flat cel, monochrome, pencil, watercolor, line art, or another medium. Every item must pass:
 
-- **Color coverage:** every pictorial panel is completely and intentionally colored. Light gutters and source-motivated white cloud, snow, mist, water glints, or highlights are valid; unfinished paper-white subject or environment regions are not.
-- **Contour hierarchy:** medium dark contours define silhouettes, overlaps, expressions, folds, and prop construction; thinner interior marks remain subordinate. The page is not carried by a web of equal fine lines.
-- **Cel volume:** people, skin, hair, clothing, key props, and focal foreground use two to four coherent hard or clean-edged value groups. Continuous photo gradients, airbrushed skin, pores, and glossy beauty rendering do not dominate.
-- **Color-mass priority:** at 128–256 px, major hue and value shapes establish entry, hierarchy, and depth before line texture becomes readable.
-- **Character/environment match:** background and character share one completion family. Backgrounds are fully colored and simplified, not photographic/painterly plates or unfinished sketches behind cel characters.
-- **Material locality:** water, grass, bark, stone, metal, fabric, and cloud use different selective texture behavior. Global pencil grain, global hatch, or one texture overlay cannot substitute for material authorship.
-- **Soft-edge budget:** gradients and lost edges are concentrated in atmosphere, reflection, glow, spray, or distant depth; foreground bodies, clothing, props, and plants remain designed through clear shapes.
-- **Cross-panel lock:** contour weight, fill opacity, cel-step count, face/skin/hair model, saturation logic, background completion, texture family, border weight, and gutter color remain stable throughout the page.
+- **Colour coverage:** every pictorial panel is fully and intentionally authored. Light gutters and source-motivated cloud, mist, spray, reflection, or highlights are valid; photo pixels, unfinished paper-white regions, and translucent-lineart underpainting are not.
+- **Mass and value structure:** roughly `5–9` interlocking large colour masses organize each panel, with three broad light/middle/dark value groups and local colour turns. The masses remain related across the page rather than pasted independently.
+- **Scene-owned colour:** dominant field, structural counter, focal accent, and neutral bridge roles are identifiable; the exposure key and main warm/cool relationship do not randomly reset between panels.
+- **Plane authorship:** silhouettes and volumes are reconstructed through designed shapes, faceted planes, and selective foreshortening; outlines alone do not carry the form.
+- **Connected brush fields:** neighbouring forms share compatible brush direction, temperature, value, and boundary illumination so the subject belongs to the scene instead of looking cut out.
+- **Material locality:** hair, skin, cloth, grass, stone, metal, water, cloud, and other source materials use distinct mark scale/direction. A global brush, oil, noise, or paper overlay cannot substitute for material authorship.
+- **Edge hierarchy:** focal-owner edges are the sharpest and most contrasted, support edges are controlled, and contextual depth/atmosphere may soften. Uniform blur or uniformly hard edges fail.
+- **Character/environment match:** figure and background share one painterly completion family, with readable anime/comic anatomy and no photographic plate behind the character.
+- **Face geometry:** head axis, eye-line, gaze, expression, hair mass, and feature spacing remain stable across panels; painterly marks may enrich them but cannot move or replace them.
+- **Cross-panel lock:** contour role, mass/value logic, exposure key, palette roles, plane language, brush continuity, shared illumination, edge hierarchy, face model, background completion, border weight, and gutter colour remain stable throughout the page.
 
-If the user explicitly requested monochrome, pencil, watercolor, painterly, or line art, replace this gate with an equally explicit medium-specific Completion Lock; do not treat the house default as higher priority than the user.
+If the user explicitly requested flat cel, monochrome, pencil, watercolor, line art, or another medium, replace this gate with that medium's explicit Completion Lock; do not treat the painterly default as higher priority than the user.
+
+## Alternate Flat-Cel Completion Gate
+
+When flat cel or the earlier Finished Luminous Cel Comic mode is explicitly requested, require complete opaque fills, two-to-four stable grouped cel values, medium-dark structural contours, simplified anime planes, fully coloured backgrounds, local material texture, and the same cross-panel completion family. This alternate gate still rejects lineart-only, photo-filter, semi-photoreal, or mixed-finish pages.
 
 ## Detail Gate
 
 - Faces, hair, clothes, markings, selected prop construction/material, and important landmarks are consistent.
-- Line, opaque fill, cel value steps, texture, edge behavior, anatomy stylization, background finish, and border/gutter language form one Style Bible, Style Fingerprint, and Completion Lock.
+- Contour role, colour masses, value groups, plane language, brush continuity, shared illumination, material marks, edge behavior, anatomy stylization, background finish, and border/gutter language form one Style Bible, Style Fingerprint, and Completion Lock (or the explicit alternate-medium lock).
 - At least four concrete comic transformation operations are visible: designed contour, simplified shape/anatomy, grouped values, limited palette hierarchy, material print/brush system, authored perspective/silhouette, or page-level rhythm.
 - If the source's photographic rendering remains dominant, fail this gate even when the palette is attractive.
 - Texture is material-specific rather than a global overlay.
@@ -132,7 +138,7 @@ Score `0 = fail`, `1 = acceptable`, `2 = strong`.
 5. Adjacent-panel visual differentiation and focal-owner changes
 6. Compact `2:3` page geometry, lateral reading flow, hierarchy, and gutter pacing
 7. Cross-panel Style Bible, Style Fingerprint, and Completion Lock consistency
-8. Line/opaque-fill/cel-value/color/shape/texture authorship and non-photographic transformation
+8. Colour-mass/value/plane/brush/material/edge authorship and non-photographic transformation
 9. Comic-page finish and thumbnail readability
 10. Originality and absence of reference/franchise residue
 
@@ -158,11 +164,11 @@ Change only the failed module and preserve successful decisions.
 | Padded panel count | Merge or delete beats without delta; resize the remaining panels by importance |
 | Unreadable page flow | Simplify the grid, strengthen entry/exit, and make gutter sizes correspond to transitions |
 | Vertical-strip layout | Restore the fixed portrait `2:3` canvas; rebuild the page as a two- or three-column mosaic, limit full-width panels, and create at least two lateral reading moves |
-| Style drift | Reinstate one six-axis Style Bible and one character/environment model across all panels |
-| Still photographic | Rebuild line, value groups, shape simplification, and material texture; remove filter underpainting |
-| Lineart-dominant or lightly tinted finish | Restore complete opaque color masses, two to four cel value groups, medium structural contours, grouped hair/skin planes, and fully colored backgrounds; remove global pencil/hatch/wash dominance |
-| Character/background finish mismatch | Keep the successful focal design, then redraw the incompatible environment or subject into the same cel-step, fill-opacity, edge, texture, border, and saturation system |
-| Mixed completion across panels | Freeze one Style Fingerprint and Completion Lock, then correct only the panels whose contour weight, fill opacity, shading steps, gradient budget, or background finish drifted |
+| Style drift | Reinstate one six-axis Style Bible, one Painterly Comic Animation fingerprint, and one character/environment model across all panels |
+| Still photographic | Rebuild contour, colour masses, three value groups, faceted planes, connected brush fields, and material marks; remove photo underpainting |
+| Lineart-dominant, pasted blocks, or global-texture finish | Restore fully authored interlocking colour masses, three broad value groups, selective structural contours, plane turns, shared illumination, and material-local marks; remove isolated stickers, global brush/noise, and washed-lineart dominance |
+| Character/background finish mismatch | Keep the successful focal design, then redraw the incompatible environment or subject into the same plane, brush, light, edge, texture, border, and palette-role system |
+| Mixed completion across panels | Freeze one Style Fingerprint and Completion Lock, then correct only the panels whose mass/value logic, plane language, brush continuity, edge hierarchy, face geometry, or background completion drifted |
 | Overdesigned effects | Remove nonessential glow, speed lines, textures, broken borders, and decorations; restore focal hierarchy |
 | Gibberish text | Remove all lettering or restore only exact verified copy in reserved areas |
 | Franchise residue | Remove names, motifs, costumes, props, logos, and page echoes; rederive design from the source and broad traits |

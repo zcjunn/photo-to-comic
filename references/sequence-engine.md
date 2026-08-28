@@ -171,34 +171,41 @@ The final page must visibly redraw the source. Select at least four of these ope
 
 Reject any direction described only as cinematic color grading, lens effects, HDR, film grain, or “make it look like a comic.” If a generated panel still reads as the original photograph with a filter, rebuild the line, value grouping, shape language, and material finish before changing decorative effects.
 
-## Style Fingerprint and Finished-Color Completion Lock
+## Style Fingerprint and Painterly Completion Lock
 
-Style is not allowed to re-roll independently for each photograph or panel. Unless the user explicitly requests another medium, freeze the Finished Luminous Cel Comic fingerprint from `style-research.md` before the Panel Difference Map.
+Style is not allowed to re-roll independently for each photograph or panel. Unless the user explicitly requests another medium, freeze the Painterly Comic Animation fingerprint from `style-research.md` and `painterly-comic-adapter.md` before the Panel Difference Map.
 
 ```yaml
 style_fingerprint:
-  contour_hierarchy: medium dark silhouette/overlap contours plus thinner interior marks
-  opaque_color_mass: complete pictorial fill; no tinted-lineart finish
-  cel_value_steps: 2-4 stable grouped steps
-  face_and_anatomy: simplified identity-faithful anime planes
-  background_finish: fully colored, simplified, same completion family as character
-  material_texture: local and source-specific, subordinate to color masses
-  atmospheric_softness: sky/cloud/mist/spray/reflection/distant depth only
-  border_gutter_language: stable medium dark frames and clean light gutters
+  contour_hierarchy: selective structural contours; thinner interior marks; line never the whole surface
+  macro_colour_masses: 5-9 interlocking large masses
+  value_groups: 3 broad light/middle/dark groups with local colour turns
+  colour_roles: dominant field / structural counter / focal accent / neutral bridge
+  face_and_anatomy: simplified identity-faithful anime planes; head axis/eye-line/gaze/feature spacing guarded
+  shape_and_plane: reconstructed graphic silhouettes and faceted planes
+  brush_continuity: connected neighbouring brush fields with shared boundary illumination
+  material_texture: local mark grammar by material, never global texture
+  edge_hierarchy: focal sharp / support controlled / context softer
+  background_finish: fully painted, simplified, same completion family as character
+  border_gutter_language: stable medium-dark frames and clean light gutters
 completion_lock:
+  painterly_default_active: true unless explicitly overridden
+  page_ratio: exact portrait 2:3 compact mosaic
+  exposure_key: selected once for the page
   line_is_structure_not_surface: true
   character_background_finish_match: true
-  skin_is_not_photographic: true
-  hair_uses_grouped_locks: true
-  global_pencil_or_wash_texture: false
+  global_texture_overlay: false
+  flat_cel_band_only: false
+  photo_filter_or_underpainting: false
+  face_geometry_guard: true
   panel_finish_drift: false
 ```
 
-- Let the source change hue roles, accent color, weather, and energy, but preserve the same contour-to-fill relationship, cel-step logic, facial simplification, background completion, and material hierarchy.
-- At thumbnail size, the page must be organized first by colored silhouettes and value masses. Thin line detail should become important only after the macro color structure is already readable.
-- A detail panel may carry more bristles, cracks, droplets, seams, or hardware, but it may not switch to sketch, pencil, watercolor wash, airbrushed photo shading, or semi-photoreal rendering.
-- The character and environment must share one completion family. Do not render the person as clean cel anime over a photographic or painterly background, and do not leave the background as line art behind a fully colored person.
-- Explicit black-and-white, pencil, watercolor, painterly, or other medium requests replace this fingerprint, but they still require one equally specific cross-panel Completion Lock.
+- Let the source change hue roles, focal accent, weather, and energy, but preserve the same macro-mass count, value-group logic, exposure key, plane language, brush continuity, material hierarchy, and face packet.
+- At thumbnail size, the page must be organized first by interlocking colour/value shapes. A detail panel may carry denser bristles, cracks, droplets, seams, or hardware, but it keeps the same light direction, palette roles, and completion family.
+- Connect neighbouring forms with related brush direction, temperature, value, and shared illumination. Keep edges sharpest at the focal owner, controlled in support areas, and softer only in contextual depth or atmosphere.
+- Reject flat pasted colour blocks, global oil/noise texture, uniform blur, photo underpainting, lineart-only panels, and clean anime figures over photographic backgrounds.
+- If the user explicitly requests flat cel, opaque hard-edge, black-and-white, pencil, watercolor, or another medium, replace this fingerprint with the requested medium's explicit Completion Lock while preserving the page and sequence contracts.
 
 ## Panel Difference Map
 
@@ -248,12 +255,22 @@ distinct_angles_or_heights: 2 or more
 distinct_focal_owners: 3 or more when source permits
 same_composition_reused: false
 comic_transformation_operations: 4 or more
-finished_color_default_active: true unless explicitly overridden
-opaque_fill_coverage_complete: true
-cel_value_steps_stable: 2-4
+painterly_comic_default_active: true unless explicitly overridden
+macro_colour_masses: 5-9 interlocking masses
+value_group_count: 3 broad groups
+colour_roles_locked: true
+connected_brush_fields: true
+shared_boundary_illumination: true
+faceted_plane_authorship: true
+material_local_marks: true
+edge_hierarchy_consistent: true
+line_is_structure_not_surface: true
 color_masses_dominate_lines_at_thumbnail: true
 character_background_finish_match: true
-lineart_or_semi_photoreal_drift: false
+flat_cel_only_or_semi_photoreal_drift: false
+global_texture_overlay: false
+photo_underpainting: false
+face_geometry_guard: true
 reconstructed_viewpoints: at least 1 for 3–4 panels; at least 2 for 5+ panels
 source_camera_side_locked: false unless explicitly requested
 opening_ending_visible_differences: 4 or more when they share a scale
@@ -279,7 +296,7 @@ Hold constant across panels:
 - subject and object count unless an omission is intentional and documented;
 - landmark order, support surfaces, recurring props, weather/time window;
 - line family, palette roles, anatomy model, texture family, border/gutter language;
-- Style Fingerprint and Completion Lock: contour hierarchy, opaque fill coverage, cel-step count, face/skin/hair simplification, background completion, gradient budget, and material-local texture;
+- Style Fingerprint and Completion Lock: macro colour masses, three value groups, exposure key, plane language, connected brush fields, shared illumination, edge hierarchy, face/skin/hair simplification, background completion, and material-local marks (or the explicit alternate-medium lock);
 - one recurring visual motif derived from the photo, if useful.
 - selected prop recognition silhouettes, visible component stacks, count logic, materials/patterns, contact/attachment, semantic locks, and occluded unknowns.
 

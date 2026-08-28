@@ -1,4 +1,4 @@
 interface:
   display_name: "Photo to Comic 照片漫画"
-  short_description: "用一张照片生成有主题、多机位、母题统一的2:3彩色漫画页"
-  default_prompt: "Use $photo-to-comic to reconstruct my photo as one exact portrait 2:3 multi-column, fully colored cel-shaded comic page with a stable Style Fingerprint, a source-derived primary motif, inventive source-consistent cameras and actions, and one consistent finish across every panel."
+  short_description: "用一张照片生成多机位绘画感2:3漫画组图"
+  default_prompt: "Use $photo-to-comic to turn my photo into one exact portrait 2:3 multi-panel Painterly Comic Animation page, preserving authored shot-scale differences, reconstructed viewpoints, motif continuity, face geometry, and one shared painterly colour, plane, brush, and light system across every panel."
