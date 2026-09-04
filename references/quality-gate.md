@@ -34,6 +34,7 @@ Fail immediately when applicable:
 - panel count is padded and can be reduced without losing information;
 - characters and setting change style from panel to panel;
 - without an explicit alternate-medium request, the page is lineart-dominant, only lightly tinted, semi-photoreal, flat pasted-block, globally textured, or inconsistently finished instead of a coherent Painterly Comic Animation page;
+- without an explicit flat-cel request, the page resolves as clean digital cel anime: uniform smooth outlines enclose most forms, volume is carried mainly by hard two-band shading, surfaces are vector-clean or airbrushed, and painterly evidence is absent at thumbnail, panel, or detail scale;
 - the character and background use incompatible finish systems, or one panel is sketch/pencil/wash/photo-underpainted while another is fully painted;
 - the page is a screenshot/contact sheet of the source, or a wide/medium/close crop ladder with no authored concept;
 - every panel preserves the source composition, pose, gaze, or environment distribution as an Edit Target and could be produced by cropping, zooming, or recoloring the original photograph;
@@ -100,17 +101,29 @@ Every applicable item must pass:
 Apply this gate unless the user explicitly requested flat cel, monochrome, pencil, watercolor, line art, or another medium. Every item must pass:
 
 - **Colour coverage:** every pictorial panel is fully and intentionally authored. Light gutters and source-motivated cloud, mist, spray, reflection, or highlights are valid; photo pixels, unfinished paper-white regions, and translucent-lineart underpainting are not.
+- **Medium identity:** ignoring the gutters, every panel reads first as a hand-painted animation image rather than a standard clean cel-anime illustration. Painterly wording in the prompt is irrelevant unless visible paint construction survives inspection.
 - **Mass and value structure:** roughly `5–9` interlocking major colour masses organize a dominant panel and `3–6` organize a small support panel, with three broad light/middle/dark value groups and local colour turns. The masses are recomposed for each shot and remain related across the page rather than pasted independently.
 - **Scene-owned colour:** dominant field, structural counter, focal accent, and neutral bridge roles are identifiable; time, weather, and palette family stay coherent while value ownership, warm/cool emphasis, focal accent position, and local exposure may shift by panel.
 - **Plane authorship:** silhouettes and volumes are reconstructed through designed shapes, faceted planes, and selective foreshortening; outlines alone do not carry the form.
 - **Connected brush fields:** neighbouring forms share compatible brush direction, temperature, value, and boundary illumination so the subject belongs to the scene instead of looking cut out.
-- **Material locality:** hair, skin, cloth, grass, stone, metal, water, cloud, and other source materials use distinct mark scale/direction. A global brush, oil, noise, or paper overlay cannot substitute for material authorship.
-- **Edge hierarchy:** focal-owner edges are the sharpest and most contrasted, support edges are controlled, and contextual depth/atmosphere may soften. Uniform blur or uniformly hard edges fail.
-- **Character/environment match:** figure and background share one painterly completion family, with readable anime/comic anatomy and no photographic plate behind the character.
+- **Material Paint Proof Map:** at least four source-present materials are named when available and their visible construction, stroke direction, edge behavior, and reflectance differ. At close scale, at least three important present materials must visibly prove that divergence. A generic brush, oil, noise, or paper overlay cannot substitute for material authorship.
+- **Edge hierarchy:** focal-owner edges use the sharpest fragments; support edges are controlled and partly broken; contextual edges may become soft or lost only through depth, motion, or atmosphere. Complete uniform dark perimeters, perfect vector contours, uniform blur, and uniformly hard edges fail.
+- **Character/environment match:** figure and background share one hand-painted completion family, with readable stylized-animation/comic anatomy and no photographic plate or clean cel-character layer behind/in front of it.
 - **Face identity:** facial proportions, relative feature spacing, age cues, distinctive features, and hair mass remain recognizable across panels. Head axis, eye-line, gaze, expression, mouth state, pose, and hand state may change intentionally with the storyboard and must remain anatomically coherent.
 - **Cross-panel lock:** contour role, area-adaptive mass/value logic, time/weather/palette family, plane language, brush continuity, shared illumination, edge hierarchy, face identity model, background completion, border weight, and gutter colour remain stable. Panel-specific camera, pose, gaze, value ownership, and exposure emphasis are not frozen.
+- **Three-scale proof:** thumbnail shows irregular interlocking masses and varied edge rhythm; panel scale shows faceted turns, connected structural currents, and shared boundary illumination; detail scale shows divergent material marks and no important form enclosed by one perfect vector-like outline.
 
 If the user explicitly requested flat cel, monochrome, pencil, watercolor, line art, or another medium, replace this gate with that medium's explicit Completion Lock; do not treat the painterly default as higher priority than the user.
+
+## Three-Scale Painted-Surface Gate
+
+Run this before scoring general polish:
+
+1. **Thumbnail:** temporarily ignore line detail. The page must still read through irregular interlocking colour/value masses, asymmetric silhouette breaks, and edge rhythm. Uniformly ink-enclosed objects fail even when the colour palette is beautiful.
+2. **Panel:** each dominant/support panel must show unequal internal turns, faceted reconstruction, one connected directional stroke current, and at least one adjacency bound by contact, reflected colour, shared light, overlap, or atmospheric merge.
+3. **Detail:** compare at least three important source-present materials. Their mark scale, direction, edge, and reflectance must visibly differ; skin cannot share the same hard bands as cloth, hair cannot be only outlined strands, foliage cannot be leaf-by-leaf photo detail, and road/stone cannot share a universal noise layer.
+
+If any scale lacks visible evidence, fail the default painterly style even when source continuity, sequence, page geometry, and character attractiveness pass. Preserve those successful modules and repaint only the medium.
 
 ## Alternate Flat-Cel Completion Gate
 
@@ -138,7 +151,7 @@ Score `0 = fail`, `1 = acceptable`, `2 = strong`.
 5. Adjacent-panel visual differentiation and focal-owner changes
 6. Compact `2:3` page geometry, lateral reading flow, hierarchy, and gutter pacing
 7. Cross-panel Style Bible, Style Fingerprint, and Completion Lock consistency
-8. Colour-mass/value/plane/brush/material/edge authorship and non-photographic transformation
+8. Three-scale hand-painted medium identity: colour-mass/value/plane/connected-brush/material/edge authorship without clean-cel drift
 9. Comic-page finish and thumbnail readability
 10. Originality and absence of reference/franchise residue
 
@@ -167,6 +180,7 @@ Change only the failed module and preserve successful decisions.
 | Vertical-strip layout | Restore the fixed portrait `2:3` canvas; rebuild the page as a two- or three-column mosaic, limit full-width panels, and create at least two lateral reading moves |
 | Style drift | Reinstate one six-axis Style Bible, one Painterly Comic Animation fingerprint, and one character/environment model across all panels |
 | Still photographic | Rebuild contour, colour masses, three value groups, faceted planes, connected brush fields, and material marks; remove photo underpainting |
+| Clean digital cel-anime drift | Preserve source continuity, beat map, cameras, actions, motifs, panel geometry, and successful colour roles. Repaint only the rendering system: place the hand-painted non-cel identity first, remove uniform complete outlines and smooth hard cel bands, build unequal opaque colour turns and connected directional stroke fields, bind figure/background with shared light, and enforce the source-specific Material Paint Proof Map at thumbnail, panel, and detail scale |
 | Lineart-dominant, pasted blocks, or global-texture finish | Restore fully authored interlocking colour masses, three broad value groups, selective structural contours, plane turns, shared illumination, and material-local marks; remove isolated stickers, global brush/noise, and washed-lineart dominance |
 | Character/background finish mismatch | Keep the successful focal design, then redraw the incompatible environment or subject into the same plane, brush, light, edge, texture, border, and palette-role system |
 | Mixed completion across panels | Freeze one rendering-only Style Fingerprint and Completion Lock, then correct only the panels whose area-adaptive mass/value logic, plane language, brush continuity, edge hierarchy, face identity, or background completion drifted; do not restore copied pose, gaze, camera, or exposure maps |

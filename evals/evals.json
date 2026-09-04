@@ -1,7 +1,7 @@
 {
   "skill": "photo-to-comic",
-  "version": "1.8.0",
-  "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, at least three shot scales, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, optional story- and beauty-driven camera relocation, source-supported action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a rendering-only Painterly Comic Animation Style Fingerprint adapted from painterly-frame methods, identity-versus-performance separation, explicit flat-cel/monochrome overrides, and rejection of single-frame, long-scroll, single-column, forced-angle, repeated-crop, prop-drift, two-panel, franchise-imitation, lineart-dominant, pasted-block, global-texture, semi-photoreal, or mixed-finish failures.",
+  "version": "1.9.0",
+  "purpose": "Behavioral cases for source-grounded themes, a minimum three-panel adaptive count, at least three shot scales, exact compact portrait 2:3 page geometry, multi-column lateral reading, scene-world reconstruction, optional story- and beauty-driven camera relocation, source-supported action invention, authored primary and secondary prop/motif roles, cross-panel construction and material continuity, opening/ending contrast, a rendering-only Painterly Comic Animation Style Fingerprint adapted from painterly-frame methods, early hand-painted non-cel style dominance, source-specific Material Paint Proof Maps, thumbnail/panel/detail painterly evidence, identity-versus-performance separation, explicit flat-cel/monochrome overrides, and rejection of single-frame, long-scroll, single-column, forced-angle, repeated-crop, prop-drift, two-panel, franchise-imitation, clean-cel drift, lineart-dominant, pasted-block, global-texture, semi-photoreal, or mixed-finish failures.",
   "cases": [
     {
       "id": "quiet-station-portrait-adaptive",
@@ -490,6 +490,42 @@
         "Create at least three visibly divided panels and at least three shot scales while preserving one camera direction only as a direction, not as an exact repeated composition.",
         "Generate real information gain through adjacent action/state, focal-owner change, object or relationship reveal, motif transformation, foreground, value ownership, time beat, or panel geometry.",
         "Fail the result if it is merely wide, medium, and close crops of the same pose despite meeting the shot-scale count."
+      ]
+    },
+    {
+      "id": "reject-clean-cel-anime-drift-under-painterly-default",
+      "request": "这页分镜和颜色都可以，但画风变成了普通干净赛璐璐动漫，和 painterly-frame 的要求没有关联。",
+      "input_contract": "One source photo plus a coherent multi-panel result with good narrative/layout but uniform smooth outlines, hard two-band cel shading, vector-clean surfaces, airbrushed skin, and no visible material-specific paint construction.",
+      "expected_route": "Review and one targeted rendering correction",
+      "expected_behavior": [
+        "Pass successful source continuity, beat map, cameras, actions, motifs, and 2:3 page topology while immediately failing the default Painterly Comic Continuity Gate.",
+        "Identify clean digital cel anime as a medium-identity failure rather than a small color or polish preference, even when the character is attractive and the page reads well.",
+        "Correct only the rendering system: remove uniform complete outlines and smooth hard cel bands; restore unequal opaque colour turns, connected directional stroke fields, shared boundary light, and lost-and-found edges.",
+        "Do not activate the Finished Luminous Cel Comic alternate unless the user explicitly requests flat cel."
+      ]
+    },
+    {
+      "id": "painterly-style-dominance-precedes-panel-detail",
+      "request": "继续用同一套多格叙事，但这次一定让 painterly-frame 的手绘画面语言成为主导，不要再被动漫脸和描线带成赛璐璐。",
+      "input_contract": "One source photo and a planned three-or-more-panel sequence whose long prompt could dilute rendering instructions.",
+      "expected_route": "Create with early style-dominance header",
+      "expected_behavior": [
+        "Place a short hand-painted animation comic medium identity within the first three production-prompt blocks, before the detailed Panel Map.",
+        "Lead with interlocking opaque paint shapes, unequal internal turns, connected directional strokes, shared boundary illumination, and lost-and-found edges; explicitly reject uniform complete outlines, smooth cel bands, vector-clean surfaces, and airbrushed commercial-anime polish.",
+        "Use painted-animation facial proportions instead of leading with anime-face vocabulary, while preserving identity proportions and allowing storyboard-controlled performance changes.",
+        "Repeat only a compact anti-cel reminder after the panel map so style remains coherent without overwhelming the narrative plan."
+      ]
+    },
+    {
+      "id": "source-specific-material-paint-proof-at-three-scales",
+      "request": "不要只写 painterly，要让我从天空、草、皮肤、头发、衣服和路面上真正看出不同的绘画方式。",
+      "input_contract": "One outdoor portrait containing at least four important visible materials such as sky/cloud, foliage, skin, hair, cloth, road/stone, water, or metal.",
+      "expected_route": "Create or Review with Material Paint Proof Map",
+      "expected_behavior": [
+        "Build a Material Paint Proof Map from source-present materials only, naming construction, stroke direction, edge behavior, reflectance, and visible proof for at least four materials when available.",
+        "Require thumbnail proof through irregular interlocking masses and edge rhythm, panel-scale proof through faceted turns, connected currents, and shared light, and detail proof through at least three visibly divergent material mark grammars.",
+        "Reject a generic global oil, canvas, noise, paper, or brush overlay even when it makes every region look textured.",
+        "Fail any important form enclosed by one perfect vector-like perimeter when the painterly default is active; preserve crisp fragments only at focal overlaps, expression, contact, or prop construction."
       ]
     }
   ]

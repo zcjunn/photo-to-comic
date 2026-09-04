@@ -173,7 +173,7 @@ The final page must visibly redraw the source. Select at least four of these ope
 
 - deliberate ink or contour behavior rather than photographic edges;
 - simplified, designed shapes or gently stylized anatomy while preserving identity;
-- grouped cel-shaded or graphic value masses instead of continuous photo shading;
+- grouped graphic/painterly value masses with unequal internal turns instead of continuous photo shading or rigid cel bands;
 - limited palette roles with one controlled focal accent;
 - a primary material system such as screentone, dry brush, pencil, or printed paper grain;
 - authored silhouette, perspective exaggeration, or selective foreshortening;
@@ -187,15 +187,16 @@ Style is not allowed to re-roll independently for each photograph or panel. Buil
 
 ```yaml
 style_fingerprint:
-  contour_hierarchy: selective structural contours; thinner interior marks; line never the whole surface
+  medium_identity: hand-painted animation comic; clean digital cel anime is an explicit alternate, never the default
+  contour_hierarchy: sparse broken contour fragments and lost-and-found edges; line never the whole surface
   macro_colour_masses: 5-9 in a dominant panel; 3-6 in a small support panel; always area-adaptive
   value_groups: 3 broad light/middle/dark groups with local colour turns
   colour_roles: dominant field / structural counter / focal accent / neutral bridge
-  face_and_anatomy: simplified identity-faithful anime planes; facial proportions, relative feature spacing, age cues, and hair mass guarded
+  face_and_anatomy: simplified identity-faithful painted-animation planes; facial proportions, relative feature spacing, age cues, and hair mass guarded
   shape_and_plane: reconstructed graphic silhouettes and faceted planes
   brush_continuity: connected neighbouring brush fields with shared boundary illumination
-  material_texture: local mark grammar by material, never global texture
-  edge_hierarchy: focal sharp / support controlled / context softer
+  material_texture: source-specific Material Paint Proof Map; local mark grammar by material, never global texture
+  edge_hierarchy: focal sharp fragments / support controlled and broken / context softer or lost where justified
   background_finish: fully painted, simplified, same completion family as character
   border_gutter_language: stable medium-dark frames and clean light gutters
 completion_lock:
@@ -205,6 +206,10 @@ completion_lock:
   source_ratio_inherited: false
   source_composition_or_pose_locked: false
   line_is_structure_not_surface: true
+  uniform_complete_outline: false
+  clean_digital_cel_anime: false
+  material_paint_proof_map: required
+  three_scale_painterly_proof: required
   character_background_finish_match: true
   global_texture_overlay: false
   flat_cel_band_only: false
@@ -217,7 +222,10 @@ completion_lock:
 - Let the source change hue roles, focal accent, weather, and energy. Preserve one palette family, three-value logic, plane language, brush continuity, material hierarchy, and identity model, while adapting mass count, value ownership, exposure emphasis, and image-space light pattern to each panel's size and camera.
 - At thumbnail size, the page must be organized first by interlocking colour/value shapes. A dominant panel may need `5-9` major masses while a small support panel may need only `3-6`. Detail panels may carry denser bristles, cracks, droplets, seams, or hardware, but all panels keep the same palette family and completion language.
 - Connect neighbouring forms with related brush direction, temperature, value, and shared illumination. Keep edges sharpest at the focal owner, controlled in support areas, and softer only in contextual depth or atmosphere.
+- Before prompting, derive a Material Paint Proof Map from the source and name at least four present materials when available. State the visible construction, stroke direction, edge behavior, reflectance, and panel/detail-scale proof for each; do not rely on a generic `painterly texture` phrase.
+- Require three-scale evidence: irregular interlocking masses and edge rhythm at thumbnail; faceted turns, connected currents, and shared light at panel scale; at least three divergent material mark grammars and no vector-perfect complete perimeter at detail scale.
 - Reject flat pasted colour blocks, global oil/noise texture, uniform blur, photo underpainting, lineart-only panels, and clean anime figures over photographic backgrounds.
+- Reject an otherwise attractive page that resolves as uniform-outline, smooth two-band, vector-clean commercial-anime cel rendering. That mode is allowed only after an explicit flat-cel request.
 - If the user explicitly requests flat cel, opaque hard-edge, black-and-white, pencil, watercolor, or another medium, replace this fingerprint with the requested medium's explicit Completion Lock while preserving the page and sequence contracts.
 
 ## Panel Difference Map
@@ -276,6 +284,7 @@ forced_angle_quota: false
 crop_only_panels: false
 comic_transformation_operations: 4 or more
 painterly_comic_default_active: true unless explicitly overridden
+hand_painted_non_cel_medium_identity: true
 macro_colour_masses: dominant panel 5-9; small support panel 3-6
 value_group_count: 3 broad groups
 colour_roles_locked: true
@@ -283,9 +292,13 @@ connected_brush_fields: true
 shared_boundary_illumination: true
 faceted_plane_authorship: true
 material_local_marks: true
+material_paint_proof_map: at least four source-present materials when available
 edge_hierarchy_consistent: true
 line_is_structure_not_surface: true
+uniform_complete_outlines: false
+clean_digital_cel_anime_default: false
 color_masses_dominate_lines_at_thumbnail: true
+three_scale_painterly_proof: true
 character_background_finish_match: true
 flat_cel_only_or_semi_photoreal_drift: false
 global_texture_overlay: false
@@ -317,7 +330,7 @@ Hold constant across panels:
 - subject and object count unless an omission is intentional and documented;
 - landmark order, support surfaces, recurring props, weather/time window;
 - line family, palette roles, anatomy model, texture family, border/gutter language;
-- Style Fingerprint and Completion Lock: area-adaptive macro colour masses, three-value logic, coherent time/weather/palette family, plane language, connected brush fields, shared illumination, edge hierarchy, identity-faithful face/hair simplification, background completion, and material-local marks (or the explicit alternate-medium lock);
+- Style Fingerprint and Completion Lock: hand-painted non-cel medium identity, area-adaptive macro colour masses, three-value logic, coherent time/weather/palette family, plane language, connected brush fields, shared illumination, broken/lost-and-found edge hierarchy, identity-faithful face/hair simplification, background completion, and a source-specific Material Paint Proof Map (or the explicit alternate-medium lock);
 - one recurring visual motif derived from the photo, if useful.
 - selected prop recognition silhouettes, visible component stacks, count logic, materials/patterns, contact/attachment, semantic locks, and occluded unknowns.
 

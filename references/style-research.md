@@ -66,16 +66,17 @@ Use this fingerprint when the user asks for a photo comic without selecting anot
 
 ```yaml
 style_fingerprint:
-  line_role: selective medium-dark structural contours; thinner interior marks; never lineart-only
+  medium_identity: visibly hand-painted animation comic; never clean digital cel anime by default
+  line_role: sparse broken dry-brush or painted contour fragments; lost-and-found edges; no complete uniform perimeter
   fill_coverage: fully authored colour field; no unpainted photo underpainting or translucent-lineart finish
   macro_colour_masses: 5-9 in a dominant panel and 3-6 in a small support panel; recomposed per shot but related across panels
   value_system: three broad light/middle/dark groups with local painterly turns
   colour_structure: dominant field / structural counter / focal accent / neutral bridge; one primary contrast axis
-  anatomy_and_face: simplified identity-faithful anime planes; preserve facial proportions, relative feature spacing, age cues, and hair mass while allowing panel-specific head axis, eye-line, gaze, expression, pose, and hand state
+  anatomy_and_face: simplified identity-faithful painted-animation planes; preserve facial proportions, relative feature spacing, age cues, and hair mass while allowing panel-specific head axis, eye-line, gaze, expression, pose, and hand state
   shape_and_plane: reconstructed graphic silhouettes and faceted planes with selective foreshortening
   brush_continuity: connected neighbouring brush fields and shared illumination at form boundaries
-  material_finish: local mark grammar for hair, cloth, skin, grass, stone, metal, water, cloud, and other source materials
-  edge_hierarchy: focal sharp; support controlled; context softer only for depth/atmosphere
+  material_finish: a source-specific Material Paint Proof Map; at least four present materials when available receive visibly different mark scale, direction, edge, and reflectance
+  edge_hierarchy: focal sharp fragments; support controlled and partly broken; context soft/lost only where depth, motion, or atmosphere justifies it
   background_finish: fully painted and simplified to the same completion family as the character
   border_and_gutter: stable medium-dark frames and clean light gutters
 ```
@@ -97,6 +98,13 @@ completion_lock:
   material_local_marks: true
   focal_support_context_contrast: true
   line_is_structure_not_surface: true
+  uniform_complete_outline: false
+  clean_digital_cel_anime: false
+  smooth_vector_surface: false
+  material_paint_proof_map: required
+  thumbnail_painterly_proof: irregular interlocking masses and edge rhythm
+  panel_scale_painterly_proof: faceted turns, connected stroke currents, shared illumination
+  detail_scale_painterly_proof: at least three visibly distinct material mark grammars
   character_background_finish_match: true
   global_texture_overlay: false
   flat_cel_band_only: false
@@ -106,7 +114,20 @@ completion_lock:
   panel_finish_drift: false
 ```
 
-At thumbnail size, large colour/value shapes establish the page before brush detail. Internal colour turns and planes must describe volume; a global oil/noise texture, equal-detail treatment, uniform blur, or pasted subject cutout is a failure. Keep comic page rhythm, readable anatomy, and motif hierarchy visible beneath the paint.
+At thumbnail size, large irregular colour/value shapes and edge rhythm establish the page before brush detail. At panel scale, internal colour turns, faceted planes, connected stroke currents, and boundary illumination must describe volume. At detail scale, source-present materials must visibly diverge: sky/cloud can use broad layered scumble, foliage grouped directional wedges, skin quiet opaque warm/cool planes, hair tapered ribbons, cloth angular dry-brush fold fans, road or stone granular broken drags, and metal compact reflected planes. Select only present materials; do not turn this list into a global texture recipe. Keep comic page rhythm, readable anatomy, and motif hierarchy visible beneath the paint.
+
+### Clean-Cel Drift Failure Signs
+
+Reject the Painterly Comic Animation default when any of these dominate, even if panel storytelling and colour are attractive:
+
+- every figure, garment, prop, and environment shape is enclosed by the same smooth dark outline;
+- objects are modeled mainly by two or three hard cel bands with little unequal internal turning;
+- sky, skin, hair, cloth, foliage, and road share one polished vector-clean or airbrushed surface;
+- hair resolves as evenly inked anime strands instead of a painted mass with overlapping ribbons and broken silhouette clumps;
+- the environment reads as a clean digital anime background while the character reads as a separate cel layer;
+- the page could be accurately described as a standard clean commercial-anime comic after its gutters are ignored.
+
+This is a medium failure, not a minor preference. Preserve the successful sequence and redraw only the rendering system unless the user explicitly selected the alternate flat-cel mode.
 
 ## Finished Luminous Cel Comic — Alternate Flat-Cel Mode
 
@@ -208,7 +229,7 @@ When the user asks for 漫画、动漫、anime、manga, or a comic page, treat t
 - screentone, dry brush, paper, or another declared material system;
 - panel composition with camera changes and readable gutters.
 
-For the Painterly Comic Animation default, choose at least four operations including authored colour/value masses, faceted planes, connected brush fields, material-local marks, selective contours, and focal/context edge hierarchy; for the alternate flat-cel mode, choose grouped cel values and opaque hard-edge fills instead. State the operations in the Style Bible. Do not describe the result as “realistic comic,” “cinematic photo with comic colors,” or “anime filter” unless the user explicitly asks for a hybrid; even then, keep the comic operations visible at thumbnail size. A style direction that cannot be recognized without zooming into texture fails the comic-transformation gate.
+For the Painterly Comic Animation default, choose at least four operations including authored colour/value masses, faceted planes, connected brush fields, source-specific material marks, broken/lost-and-found contours, and focal/context edge hierarchy; for the alternate flat-cel mode, choose grouped cel values and opaque hard-edge fills instead. State the operations in the Style Bible. Lead generation wording with `hand-painted animation comic page`, not `anime style`, `anime face`, or `clean contour`. Do not describe the result as “realistic comic,” “cinematic photo with comic colors,” or “anime filter” unless the user explicitly asks for a hybrid; even then, keep the comic operations visible at thumbnail size. A style direction that cannot be recognized without zooming into texture fails the comic-transformation gate.
 
 ## Originality Isolation Check
 

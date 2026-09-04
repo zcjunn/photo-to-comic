@@ -10,6 +10,14 @@ Never treat the source photograph as a `painterly-frame` Edit Target inside this
 
 Do not trade away panel storytelling for a painterly surface. A painterly page with five near-identical crops is still a failed comic sequence. Conversely, a varied sequence with unrelated brush treatments is a failed style lock.
 
+## Style-dominance gate
+
+The default medium must be unmistakable before the model receives the dense storyboard. Put a short style header within the first three prompt blocks:
+
+> HAND-PAINTED ANIMATION COMIC PAGE. Build forms from interlocking opaque paint shapes, unequal colour turns, connected directional strokes, shared boundary light, and lost-and-found edges. This is not clean digital cel anime: no uniform complete outlines, no smooth two-band cel shading, no vector-clean surfaces, and no airbrushed commercial-anime finish.
+
+This is not decorative negative prompting. It establishes the medium before `anime`, `contour`, `bright`, `high saturation`, or detailed panel descriptions can trigger a flat-cel prior. Use `stylized painted-animation facial proportions` for the character model; reserve `anime` wording for the user's explicit flat-cel request or for high-level readability discussion outside the production prompt.
+
 ## Page lock, not source-composition lock
 
 Freeze the outer page contract before rendering:
@@ -44,10 +52,44 @@ Use a comic-readable painted field rather than a flat cel filter or an unstructu
 - bind adjacent forms with shared illumination at boundaries; avoid a subject that looks pasted over a background;
 - reserve the crispest edges and highest local contrast for the focal owner, keep support edges controlled, and soften only contextual depth or atmosphere;
 - give materials their own mark grammar: hair locks, cloth folds, wet stone, grass, metal, water, cloud, and skin each receive different mark scale and direction;
-- keep structural contours selective and subordinate to painted masses; they clarify overlap, expression, prop construction, and important silhouette turns;
+- keep structural contours sparse, broken, and subordinate to painted masses; they clarify overlap, expression, prop construction, and important silhouette turns, then taper, break, or disappear into shared light elsewhere;
 - complete both character and environment to the same authored finish level; never leave a sketchy background behind a rendered figure.
 
-The desired medium is a **Painterly Comic Animation**: readable anime/comic anatomy and page rhythm, with authored painterly colour, planes, marks, and light. It is not photorealistic painterly rendering, a global canvas filter, a photo underpainting, or a rigid two-to-four-band cel pass.
+The desired medium is a **Painterly Comic Animation**: readable stylized-animation anatomy and comic-page rhythm, with authored painterly colour, planes, marks, and light. It is not photorealistic painterly rendering, clean digital cel anime, a global canvas filter, a photo underpainting, or a rigid two-to-four-band cel pass.
+
+## Material Paint Proof Map
+
+Before the final prompt, derive paint behavior from the actual source instead of listing generic texture adjectives. Select at least four present materials when available; choose fewer only when the source genuinely contains fewer important materials.
+
+```yaml
+material_paint_proof:
+  - material: source-present owner
+    construction: broad base plus unequal light/form turns
+    stroke_direction: follows volume, gravity, wind, flow, or surface grain
+    edge_behavior: focal fragments / broken support / lost context
+    reflectance: matte / soft reflected colour / sparse crisp plane / atmospheric
+    visible_proof: what must be legible at panel or detail scale
+```
+
+Useful translations, never a mandatory palette or material list:
+
+- sky and cloud: broad layered scumbles and overlapping atmospheric sweeps turning around light, not smooth gradients plus pasted white blobs;
+- grass, rice, or foliage: clustered directional wedges linked by wind and depth, with only a few sharp representatives, not leaf-by-leaf photo detail;
+- skin: quiet opaque warm/cool planes with sparse sharp facial accents and reflected scene colour, not peach fill or beauty airbrush;
+- hair: one dark painted mass with tapered overlapping ribbons and broken silhouette clumps, not evenly outlined strand inventory;
+- cloth: angular planes and dry-brush folds radiating from tension, gravity, seams, and contact, not every wrinkle enclosed by ink;
+- road, earth, concrete, or stone: weight-bearing planes with selective granular broken drags, not universal speckle;
+- metal or glass: compact reflected planes and a few crisp seams that borrow surrounding colour, not a full glossy outline.
+
+The map must include source ownership and visible proof. A generic sentence such as `different materials have different texture` is insufficient.
+
+## Three-scale painterly proof
+
+- **Thumbnail:** irregular interlocking masses, asymmetric silhouette breaks, and varied edge rhythm survive; the page is not organized by uniformly inked object borders.
+- **Panel:** faceted internal turns, a structural stroke current, shared illumination, and physically bound adjacencies are visible without zooming into texture.
+- **Detail:** at least three important source-present materials show different mark scale, direction, edge, and reflectance; important forms are not enclosed by one perfect vector-like perimeter.
+
+If the page would still be called clean digital cel anime after the gutters are removed, it fails this adapter even when colour, anatomy, and layout are attractive.
 
 ## Face identity versus panel performance
 
@@ -59,6 +101,7 @@ Freeze these fields before the first generation and reuse them in every panel:
 
 ```yaml
 style_name: Painterly Comic Animation
+medium_identity: visibly hand-painted animation comic; not clean digital cel anime
 page_ratio: portrait 2:3, independent of source ratio
 macro_colour_masses: dominant panel 5-9 / small support panel 3-6
 value_groups: 3 broad groups
@@ -69,7 +112,9 @@ brush_continuity: connected neighbouring fields
 illumination: shared light at form boundaries
 material_grammar: local marks by material, not global texture
 edge_hierarchy: focal sharp / support controlled / context softer
-line_role: selective structural contour, subordinate to painted masses
+line_role: sparse broken contour fragments, subordinate to painted masses; lost-and-found edges
+material_paint_proof: source-specific, visible at panel/detail scale
+three_scale_proof: irregular masses at thumbnail / connected planes and light at panel / divergent material marks at detail
 face_identity_guard: face proportions / relative feature spacing / hair mass / recurring cues
 panel_performance_variables: head axis / eye-line / gaze / expression / pose / hand state
 panel_finish: same painted completion family across all panels
@@ -83,6 +128,7 @@ Reject or target-correct the page when any of these are visible:
 
 - the original photo is still recognizable as a filtered underpainting;
 - large colour regions are flat pasted blocks with no plane turns, shared light, or boundary binding;
+- the whole page resolves as clean digital cel anime with uniform smooth outlines, hard two-band shading, vector-clean surfaces, or commercial-anime polish;
 - a global brush/noise/film texture is applied equally to sky, face, cloth, stone, and water;
 - every edge is equally sharp, equally soft, or uniformly blurred;
 - the face is line-clean but the background is photographic, or one panel is sketchy while another is fully painted;
@@ -95,4 +141,4 @@ Reject or target-correct the page when any of these are visible:
 
 When compiling the image prompt, use one compact clause such as:
 
-> Create one portrait 2:3 comic page with at least three visible panels. Treat Image 1 as semantic scene/story evidence, never as an Edit Target: do not inherit its ratio, composition, subject placement, pose, gaze, horizon, or camera as locks. Let each beat choose its own shot scale and, when useful, a level, low, high/overhead, side, reverse, over-shoulder, or object-level camera. Render every panel in one Painterly Comic Animation system: area-adaptive interlocking colour masses, three broad value groups, scene-owned colour roles, reconstructed graphic shapes and faceted planes, connected neighbouring brush fields with shared illumination, material-specific marks, focal-sharp/support-controlled/context-soft edges, selective structural contours, identity-faithful facial proportions, and one consistent completion family; no single-frame result, crop-only sequence, flat cel-band-only surface, pasted cutouts, global texture overlay, photo filter, uniform blur, or lineart-dominant finish.
+> HAND-PAINTED ANIMATION COMIC PAGE, not clean digital cel anime. Create one portrait 2:3 page with at least three visible panels. Build every panel from area-adaptive interlocking opaque paint masses, three broad value groups with unequal internal turns, reconstructed faceted shapes, connected directional brush fields, shared boundary illumination, source-specific material marks, and sparse lost-and-found contour fragments; no uniform complete outline, smooth two-band cel surface, vector-clean polish, photo underpainting, pasted blocks, or global texture. Treat Image 1 as semantic scene/story evidence, never as an Edit Target: do not inherit its ratio, composition, subject placement, pose, gaze, horizon, or camera as locks. Let each beat choose its own shot scale and, when useful, an earned level, low, high/overhead, side, reverse, over-shoulder, or object-level camera. Keep focal fragments sharp, support edges broken, contextual edges atmospheric, identity-faithful painted-animation facial proportions, and one consistent completion family across the page.
